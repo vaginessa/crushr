@@ -5,7 +5,6 @@ import android.appwidget.AppWidgetManager;
 import android.content.ComponentName;
 import android.os.Bundle;
 import android.text.Html;
-import android.view.View;
 import android.view.Window;
 import android.widget.TextView;
 
@@ -26,25 +25,17 @@ public class crushrDeleteDialog extends Activity {
 
         ((TextView)findViewById(R.id.message)).setText(Html.fromHtml(getString(R.string.delete_task, task)));
 
-        findViewById(R.id.input_cancel).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
+        findViewById(R.id.input_cancel).setOnClickListener(view -> finish());
 
-        findViewById(R.id.input_ok).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                PrefUtils.removeItem(getApplicationContext(), task, appWidgetId);
+        findViewById(R.id.input_ok).setOnClickListener(view -> {
+            PrefUtils.removeItem(getApplicationContext(), task, appWidgetId);
 
-                AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(getApplicationContext());
-                int appWidgetIds[] = appWidgetManager.getAppWidgetIds(new ComponentName(getApplicationContext(), crushrProvider.class));
-                appWidgetManager.notifyAppWidgetViewDataChanged(appWidgetIds, R.id.crushr_listview);
-                crushrProvider.updateAppWidget(getApplicationContext(), appWidgetManager, appWidgetId);
+            AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(getApplicationContext());
+            int[] appWidgetIds = appWidgetManager.getAppWidgetIds(new ComponentName(getApplicationContext(), crushrProvider.class));
+            appWidgetManager.notifyAppWidgetViewDataChanged(appWidgetIds, R.id.crushr_listview);
+            crushrProvider.updateAppWidget(getApplicationContext(), appWidgetManager, appWidgetId);
 
-                finish();
-            }
+            finish();
         });
     }
 }

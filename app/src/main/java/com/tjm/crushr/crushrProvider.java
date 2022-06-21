@@ -1,5 +1,6 @@
 package com.tjm.crushr;
 
+import android.annotation.SuppressLint;
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
@@ -43,15 +44,15 @@ public class crushrProvider extends AppWidgetProvider {
 
         Intent addIntent = new Intent(context, crushrInputDialog.class);
         addIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
-        PendingIntent addPendingIntent = PendingIntent.getActivity(context, appWidgetId, addIntent, PendingIntent.FLAG_CANCEL_CURRENT);
+        @SuppressLint("UnspecifiedImmutableFlag") PendingIntent addPendingIntent = PendingIntent.getActivity(context, appWidgetId, addIntent, PendingIntent.FLAG_CANCEL_CURRENT);
         views.setOnClickPendingIntent(R.id.add_crushr_button, addPendingIntent);
 
         Intent clickIntent = new Intent(context, crushrDeleteDialog.class);
-        PendingIntent clickPI = PendingIntent.getActivity(context, appWidgetId, clickIntent, PendingIntent.FLAG_CANCEL_CURRENT);
+        @SuppressLint("UnspecifiedImmutableFlag") PendingIntent clickPI = PendingIntent.getActivity(context, appWidgetId, clickIntent, PendingIntent.FLAG_CANCEL_CURRENT);
         views.setPendingIntentTemplate(R.id.crushr_listview, clickPI);
 
-        SharedPreferences prefs = context.getSharedPreferences(crushrProvider.SHARED_PREF_TAG, context.MODE_PRIVATE);
-        Set set = prefs.getStringSet(crushrProvider.SHARED_PREF_LIST+appWidgetId, new HashSet<String>());
+        SharedPreferences prefs = context.getSharedPreferences(crushrProvider.SHARED_PREF_TAG, Context.MODE_PRIVATE);
+        Set<String> set = prefs.getStringSet(crushrProvider.SHARED_PREF_LIST+appWidgetId, new HashSet<>());
         if(set.isEmpty()) {
             views.setViewVisibility(R.id.empty, View.VISIBLE);
             views.setViewVisibility(R.id.crushr_listview, View.GONE);

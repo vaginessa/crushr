@@ -21,7 +21,7 @@ public class crushrRemoteViewFactory implements RemoteViewsService.RemoteViewsFa
 
     private final Context context;
     private final int appWidgetId;
-    private List<String> itemList = new ArrayList<String>();
+    private final List<String> itemList = new ArrayList<>();
 
     public crushrRemoteViewFactory(Context ctx, Intent intent) {
         context = ctx;
@@ -37,8 +37,8 @@ public class crushrRemoteViewFactory implements RemoteViewsService.RemoteViewsFa
     @Override
     public void onDataSetChanged() {
         itemList.clear();
-        SharedPreferences prefs = context.getSharedPreferences(crushrProvider.SHARED_PREF_TAG, context.MODE_PRIVATE);
-        Set set = prefs.getStringSet(crushrProvider.SHARED_PREF_LIST+appWidgetId, new HashSet<String>());
+        SharedPreferences prefs = context.getSharedPreferences(crushrProvider.SHARED_PREF_TAG, Context.MODE_PRIVATE);
+        Set<String> set = prefs.getStringSet(crushrProvider.SHARED_PREF_LIST+appWidgetId, new HashSet<>());
 
         Object[] list = set.toArray();
         for(Object item : list) {

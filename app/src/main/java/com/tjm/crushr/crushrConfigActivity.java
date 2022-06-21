@@ -1,7 +1,9 @@
 package com.tjm.crushr;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.appwidget.AppWidgetManager;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
@@ -37,81 +39,63 @@ public class crushrConfigActivity extends Activity {
         mFirstSecondaryGroup = (RadioGroup) findViewById(R.id.secondary_color_selector_first_row);
         mSecondSecondaryGroup = (RadioGroup) findViewById(R.id.secondary_color_selector_second_row);
 
-        mFirstPrimaryGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (checkedId != -1 && isChecking) {
-                    isChecking = false;
-                    mSecondPrimaryGroup.clearCheck();
-                }
-                isChecking = true;
+        mFirstPrimaryGroup.setOnCheckedChangeListener((group, checkedId) -> {
+            if (checkedId != -1 && isChecking) {
+                isChecking = false;
+                mSecondPrimaryGroup.clearCheck();
             }
+            isChecking = true;
         });
-        mSecondPrimaryGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (checkedId != -1 && isChecking) {
-                    isChecking = false;
-                    mFirstPrimaryGroup.clearCheck();
-                }
-                isChecking = true;
+        mSecondPrimaryGroup.setOnCheckedChangeListener((group, checkedId) -> {
+            if (checkedId != -1 && isChecking) {
+                isChecking = false;
+                mFirstPrimaryGroup.clearCheck();
             }
+            isChecking = true;
         });
 
-        mFirstSecondaryGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (checkedId != -1 && isChecking) {
-                    isChecking = false;
-                    mSecondSecondaryGroup.clearCheck();
-                }
-                isChecking = true;
+        mFirstSecondaryGroup.setOnCheckedChangeListener((group, checkedId) -> {
+            if (checkedId != -1 && isChecking) {
+                isChecking = false;
+                mSecondSecondaryGroup.clearCheck();
             }
+            isChecking = true;
         });
-        mSecondSecondaryGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (checkedId != -1 && isChecking) {
-                    isChecking = false;
-                    mFirstSecondaryGroup.clearCheck();
-                }
-                isChecking = true;
+        mSecondSecondaryGroup.setOnCheckedChangeListener((group, checkedId) -> {
+            if (checkedId != -1 && isChecking) {
+                isChecking = false;
+                mFirstSecondaryGroup.clearCheck();
             }
+            isChecking = true;
         });
 
-        SharedPreferences prefs = getApplicationContext().getSharedPreferences(crushrProvider.SHARED_PREF_TAG, getApplicationContext().MODE_PRIVATE);
+        SharedPreferences prefs = getApplicationContext().getSharedPreferences(crushrProvider.SHARED_PREF_TAG, Context.MODE_PRIVATE);
         int primaryColor = prefs.getInt(crushrProvider.SHARED_PREF_PRIMARY_COLOR + appWidgetId, getApplicationContext().getResources().getColor(R.color.primary_color_1));
         int secondaryColor = prefs.getInt(crushrProvider.SHARED_PREF_SECONDARY_COLOR+appWidgetId, getApplicationContext().getResources().getColor(R.color.secondary_color_1));
         loadColorSelections(primaryColor, secondaryColor);
 
-        findViewById(R.id.input_cancel).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent resultValue = new Intent();
-                resultValue.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
-                setResult(RESULT_OK, resultValue);
-                finish();
-            }
+        findViewById(R.id.input_cancel).setOnClickListener(v -> {
+            Intent resultValue = new Intent();
+            resultValue.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
+            setResult(RESULT_OK, resultValue);
+            finish();
         });
 
-        findViewById(R.id.input_save).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(primaryColorId >= 0) {
-                    PrefUtils.setPrimaryColor(getApplicationContext(), getApplicationContext().getResources().getColor(primaryColorId), appWidgetId);
-                }
-                if(secondaryColorId >= 0) {
-                    PrefUtils.setSecondaryColor(getApplicationContext(), getApplicationContext().getResources().getColor(secondaryColorId), appWidgetId);
-                }
-
-                AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(getApplicationContext());
-                crushrProvider.updateAppWidget(getApplicationContext(), appWidgetManager, appWidgetId);
-
-                Intent resultValue = new Intent();
-                resultValue.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
-                setResult(RESULT_OK, resultValue);
-                finish();
+        findViewById(R.id.input_save).setOnClickListener(v -> {
+            if(primaryColorId >= 0) {
+                PrefUtils.setPrimaryColor(getApplicationContext(), getApplicationContext().getResources().getColor(primaryColorId), appWidgetId);
             }
+            if(secondaryColorId >= 0) {
+                PrefUtils.setSecondaryColor(getApplicationContext(), getApplicationContext().getResources().getColor(secondaryColorId), appWidgetId);
+            }
+
+            AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(getApplicationContext());
+            crushrProvider.updateAppWidget(getApplicationContext(), appWidgetManager, appWidgetId);
+
+            Intent resultValue = new Intent();
+            resultValue.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
+            setResult(RESULT_OK, resultValue);
+            finish();
         });
     }
 
@@ -169,6 +153,7 @@ public class crushrConfigActivity extends Activity {
         }
     }
 
+    @SuppressLint("NonConstantResourceId")
     public void onPrimaryButtonClicked(View view) {
         switch(view.getId()) {
             case R.id.primary_color_1:
@@ -210,6 +195,7 @@ public class crushrConfigActivity extends Activity {
         }
     }
 
+    @SuppressLint("NonConstantResourceId")
     public void onSecondaryButtonClicked(View view) {
         switch(view.getId()) {
             case R.id.secondary_color_1:

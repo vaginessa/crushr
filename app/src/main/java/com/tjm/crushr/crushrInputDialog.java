@@ -8,7 +8,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.inputmethod.EditorInfo;
@@ -24,6 +23,7 @@ import java.util.Set;
 /**
  * Created by cymak on 9/30/14.
  */
+@SuppressWarnings("MismatchedQueryAndUpdateOfCollection")
 public class crushrInputDialog extends Activity {
 
     private EditText newTask;
@@ -40,63 +40,52 @@ public class crushrInputDialog extends Activity {
 
         mContainerView = (LinearLayout)findViewById(R.id.container);
         newTask = (EditText)findViewById(R.id.new_task);
-        tasks = new ArrayList<String>();
+        tasks = new ArrayList<>();
         appWidgetId = getIntent().getExtras().getInt(AppWidgetManager.EXTRA_APPWIDGET_ID);
-        newTask.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if (actionId == EditorInfo.IME_ACTION_DONE || event == null || event.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
-                    String task = newTask.getText().toString().trim();
-                    PrefUtils.addItem(getApplicationContext(), task, appWidgetId);
-                    addItem(task);
-                    return true;
-                }
-                return false;
+        newTask.setOnEditorActionListener((v, actionId, event) -> {
+            if (actionId == EditorInfo.IME_ACTION_DONE || event == null || event.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
+                String task = newTask.getText().toString().trim();
+                PrefUtils.addItem(getApplicationContext(), task, appWidgetId);
+                addItem(task);
+                return true;
             }
+            return false;
         });
 
         SharedPreferences prefs = getSharedPreferences(crushrProvider.SHARED_PREF_TAG, MODE_PRIVATE);
-        Set<String> set = prefs.getStringSet(crushrProvider.SHARED_PREF_LIST+appWidgetId, new HashSet<String>());
+        Set<String> set = prefs.getStringSet(crushrProvider.SHARED_PREF_LIST+appWidgetId, new HashSet<>());
         for(String item : set) {
             addItem(item);
         }
 
-        findViewById(R.id.settings).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent configIntent = new Intent(getApplicationContext(), crushrConfigActivity.class);
-                configIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
-                startActivity(configIntent);
-            }
+        findViewById(R.id.settings).setOnClickListener(v -> {
+            Intent configIntent = new Intent(getApplicationContext(), crushrConfigActivity.class);
+            configIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
+            startActivity(configIntent);
         });
 
-        findViewById(R.id.input_ok).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String task = newTask.getText().toString().trim();
-                if(!task.isEmpty()) {
-                    PrefUtils.addItem(getApplicationContext(), task, appWidgetId);
-                    addItem(task);
-                }
-
-                AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(getApplicationContext());
-                int appWidgetIds[] = appWidgetManager.getAppWidgetIds(new ComponentName(getApplicationContext(), crushrProvider.class));
-                appWidgetManager.notifyAppWidgetViewDataChanged(appWidgetIds, R.id.crushr_listview);
-                crushrProvider.updateAppWidget(getApplicationContext(), appWidgetManager, appWidgetId);
-
-                finish();
+        findViewById(R.id.input_ok).setOnClickListener(view -> {
+            String task = newTask.getText().toString().trim();
+            if(!task.isEmpty()) {
+                PrefUtils.addItem(getApplicationContext(), task, appWidgetId);
+                addItem(task);
             }
+
+            AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(getApplicationContext());
+            int[] appWidgetIds = appWidgetManager.getAppWidgetIds(new ComponentName(getApplicationContext(), crushrProvider.class));
+            appWidgetManager.notifyAppWidgetViewDataChanged(appWidgetIds, R.id.crushr_listview);
+            crushrProvider.updateAppWidget(getApplicationContext(), appWidgetManager, appWidgetId);
+
+            finish();
         });
 
-        findViewById(R.id.input_add).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String task = newTask.getText().toString().trim();
-                if(task.isEmpty()) {
-                    Toast.makeText(getApplicationContext(), getString(R.string.empty_task_error), Toast.LENGTH_LONG).show();
-                } else {
-                    PrefUtils.addItem(getApplicationContext(), task, appWidgetId);
-                    addItem(task);
-                }
+        findViewById(R.id.input_add).setOnClickListener(view -> {
+            String task = newTask.getText().toString().trim();
+            if(task.isEmpty()) {
+                Toast.makeText(getApplicationContext(), getString(R.string.empty_task_error), Toast.LENGTH_LONG).show();
+            } else {
+                PrefUtils.addItem(getApplicationContext(), task, appWidgetId);
+                addItem(task);
             }
         });
     }
@@ -104,7 +93,7 @@ public class crushrInputDialog extends Activity {
     @Override
     public void onBackPressed() {
         AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(getApplicationContext());
-        int appWidgetIds[] = appWidgetManager.getAppWidgetIds(new ComponentName(getApplicationContext(), crushrProvider.class));
+        int[] appWidgetIds = appWidgetManager.getAppWidgetIds(new ComponentName(getApplicationContext(), crushrProvider.class));
         appWidgetManager.notifyAppWidgetViewDataChanged(appWidgetIds, R.id.crushr_listview);
         super.onBackPressed();
     }
@@ -115,13 +104,10 @@ public class crushrInputDialog extends Activity {
 
         ((TextView) newView.findViewById(R.id.crushr_task)).setText(text);
 
-        newView.findViewById(R.id.crushr_delete).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mContainerView.removeView(newView);
-                tasks.remove(text);
-                PrefUtils.removeItem(getApplicationContext(), text, appWidgetId);
-            }
+        newView.findViewById(R.id.crushr_delete).setOnClickListener(view -> {
+            mContainerView.removeView(newView);
+            tasks.remove(text);
+            PrefUtils.removeItem(getApplicationContext(), text, appWidgetId);
         });
 
         tasks.add(text);

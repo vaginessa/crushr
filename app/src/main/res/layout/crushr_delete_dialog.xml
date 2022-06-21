@@ -43,7 +43,7 @@
         android:orientation="horizontal"
         android:layout_marginRight="16dp"
         android:layout_marginLeft="16dp"
-        android:gravity="right">
+        android:gravity="end">
         <Button
             android:id="@+id/input_cancel"
             android:layout_width="100dp"
@@ -53,7 +53,8 @@
             android:background="@drawable/dialog_button"
             android:textColor="#000"
             android:textSize="20sp"
-            android:gravity="center"/>
+            android:gravity="center"
+            style="?android:attr/buttonBarButtonStyle" />
 
         <Button
             android:id="@+id/input_ok"
@@ -64,7 +65,8 @@
             android:background="@drawable/dialog_button"
             android:textColor="@android:color/holo_blue_dark"
             android:textSize="20sp"
-            android:gravity="center"/>
+            android:gravity="center"
+            style="?android:attr/buttonBarButtonStyle" />
     </LinearLayout>
 
 </LinearLayout>
