@@ -14,7 +14,8 @@
             android:excludeFromRecents="true">
         </activity>
 
-        <activity android:name=".crushrConfigActivity">
+        <activity android:name=".crushrConfigActivity"
+            android:exported="false">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE"/>
             </intent-filter>
@@ -26,7 +27,8 @@
             android:excludeFromRecents="true">
         </activity>
 
-        <receiver android:name=".crushrProvider">
+        <receiver android:name=".crushrProvider"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
                 <action android:name="android.intent.action.BOOT_COMPLETED"/>
