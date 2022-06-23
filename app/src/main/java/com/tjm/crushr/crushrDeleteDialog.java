@@ -20,6 +20,10 @@ public class crushrDeleteDialog extends Activity {
 
         setContentView(R.layout.crushr_delete_dialog);
 
+        int width = (int)(getResources().getDisplayMetrics().widthPixels*0.80);
+        int height = (int)(getResources().getDisplayMetrics().heightPixels*0.30);
+        getWindow().setLayout(width, height);
+
         final String task = getIntent().getExtras().getString(crushrProvider.EXTRA_WORD);
         final int appWidgetId = getIntent().getExtras().getInt(AppWidgetManager.EXTRA_APPWIDGET_ID);
 

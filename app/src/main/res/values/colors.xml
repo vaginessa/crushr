@@ -2,6 +2,7 @@
 <resources>
     <color name="color_border">#888888</color>
     <color name="pressed">#1f84ffff</color>
+
     <color name="primary_color_1">#00b0ff</color>
     <color name="primary_color_2">#f44336</color>
     <color name="primary_color_3">#3f51b5</color>
@@ -14,6 +15,7 @@
     <color name="primary_color_10">#795548</color>
     <color name="primary_color_11">#000000</color>
     <color name="primary_color_12">#d500f9</color>
+
     <color name="secondary_color_1">#84ffff</color>
     <color name="secondary_color_2">#64ffda</color>
     <color name="secondary_color_3">#00e676</color>

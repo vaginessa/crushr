@@ -3,8 +3,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#fff">
+    android:layout_height="wrap_content"
+    android:background="@drawable/dialog_background"
+    android:layout_gravity="center_vertical"
+    android:padding="16dp">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -12,61 +14,71 @@
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="24dp">
+            android:layout_height="wrap_content">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-smallcaps"
                 android:text="@string/delete_task_title"
-                android:textColor="#000"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                android:paddingBottom="24dp"/>
+                android:textColor="@android:color/black"
+                android:textSize="22sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/delete_task_message"
+                android:textColor="@android:color/black"
+                android:layout_marginTop="16dp"/>
 
             <TextView
                 android:id="@+id/message"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#000"/>
+                android:textColor="@android:color/holo_red_light"
+                android:background="@drawable/rounded_bg"
+                android:padding="7dp"
+                android:layout_marginTop="8dp"/>
         </LinearLayout>
     </ScrollView>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.1dp"
-        android:background="#ccc"/>
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="72dp"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginRight="16dp"
-        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
         android:gravity="end">
         <Button
             android:id="@+id/input_cancel"
-            android:layout_width="100dp"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="@string/cancel"
+            android:textAllCaps="true"
             android:layout_gravity="center"
-            android:background="@drawable/dialog_button"
-            android:textColor="#000"
+            android:background="@drawable/button_gradient"
+            android:textColor="@android:color/black"
             android:textSize="20sp"
             android:gravity="center"
-            style="?android:attr/buttonBarButtonStyle" />
+            android:layout_marginEnd="8dp"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="3dp"
+            style="?android:attr/buttonBarButtonStyle"/>
 
         <Button
             android:id="@+id/input_ok"
-            android:layout_width="100dp"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="@string/ok"
             android:layout_gravity="center"
-            android:background="@drawable/dialog_button"
+            android:background="@drawable/button_gradient"
             android:textColor="@android:color/holo_blue_dark"
             android:textSize="20sp"
             android:gravity="center"
-            style="?android:attr/buttonBarButtonStyle" />
+            android:layout_marginStart="8dp"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="3dp"
+            style="?android:attr/buttonBarButtonStyle"/>
     </LinearLayout>
 
 </LinearLayout>

@@ -5,16 +5,18 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#fff">
+    android:background="@android:color/white"
+    android:padding="16dp">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-smallcaps"
         android:text="@string/choose_primary_color"
-        android:textColor="#000"
-        android:textSize="24sp"
+        android:textColor="@android:color/black"
+        android:textSize="22sp"
         android:textStyle="bold"
-        android:padding="24dp"/>
+        android:padding="22dp"/>
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -31,7 +33,6 @@
                 android:background="@drawable/color_1_selector"
                 android:button="@android:color/transparent"
                 android:layout_margin="4dp"
-                android:checked="true"
                 android:onClick="onPrimaryButtonClicked"
                 tools:ignore="UsingOnClickInXml"/>
             <RadioButton
@@ -68,6 +69,7 @@
                 android:background="@drawable/color_5_selector"
                 android:layout_margin="4dp"
                 android:button="@android:color/transparent"
+                android:checked="true"
                 android:onClick="onPrimaryButtonClicked"
                 tools:ignore="UsingOnClickInXml"/>
             <RadioButton
@@ -147,11 +149,12 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-smallcaps"
         android:text="@string/choose_secondary_color"
-        android:textColor="#000"
-        android:textSize="24sp"
+        android:textColor="@android:color/black"
+        android:textSize="22sp"
         android:textStyle="bold"
-        android:padding="24dp"/>
+        android:padding="22dp"/>
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -168,7 +171,6 @@
                 android:background="@drawable/color_13_selector"
                 android:button="@android:color/transparent"
                 android:layout_margin="4dp"
-                android:checked="true"
                 android:onClick="onSecondaryButtonClicked"
                 tools:ignore="UsingOnClickInXml"/>
             <RadioButton
@@ -267,6 +269,7 @@
                 android:background="@drawable/color_23_selector"
                 android:layout_margin="4dp"
                 android:button="@android:color/transparent"
+                android:checked="true"
                 android:onClick="onSecondaryButtonClicked"
                 tools:ignore="UsingOnClickInXml"/>
             <RadioButton
@@ -283,33 +286,40 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="72dp"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginRight="16dp"
-        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
         android:gravity="end">
 
         <Button
             android:id="@+id/input_cancel"
-            android:layout_width="100dp"
-            android:layout_height="50dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="@string/cancel"
+            android:textAllCaps="true"
             android:layout_gravity="center"
-            android:background="@drawable/dialog_button"
-            android:textColor="#000"
+            android:background="@drawable/button_gradient"
+            android:textColor="@android:color/black"
             android:textSize="20sp"
             android:gravity="center"
+            android:layout_marginEnd="8dp"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="3dp"
             style="?android:attr/buttonBarButtonStyle" />
         <Button
             android:id="@+id/input_save"
-            android:layout_width="100dp"
-            android:layout_height="50dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="@string/save"
+            android:textAllCaps="true"
             android:layout_gravity="center"
-            android:background="@drawable/dialog_button"
+            android:background="@drawable/button_gradient"
             android:textColor="@android:color/holo_blue_dark"
             android:textSize="20sp"
             android:gravity="center"
+            android:layout_marginStart="8dp"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="3dp"
             style="?android:attr/buttonBarButtonStyle" />
     </LinearLayout>
 

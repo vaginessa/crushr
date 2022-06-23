@@ -4,106 +4,104 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="300dp"
-    android:layout_marginLeft="20dp"
-    android:layout_marginRight="20dp"
-    android:background="#fff">
+    android:layout_height="wrap_content"
+    android:background="@drawable/dialog_background"
+    android:layout_gravity="center_vertical"
+    android:padding="16dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-smallcaps"
+            android:text="@string/manage_tasks"
+            android:textColor="@android:color/black"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            tools:ignore="RelativeOverlap" />
+        <ImageView
+            android:id="@+id/settings"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/settings"
+            tools:ignore="ContentDescription"/>
+
+    </RelativeLayout>
 
     <ScrollView
+        android:id="@+id/container_scrollview"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:scrollbarThumbVertical="@null">
+
         <LinearLayout
-            android:orientation="vertical"
+            android:id="@+id/container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="24dp">
+            android:orientation="vertical"
+            android:showDividers="middle"
+            android:divider="?android:dividerHorizontal"
+            android:animateLayoutChanges="true"
+            android:background="@android:color/transparent"/>
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/tasks"
-                    android:textColor="#000"
-                    android:textSize="24sp"
-                    android:textStyle="bold"
-                    android:paddingLeft="24dp"
-                    android:paddingRight="24dp"
-                    android:paddingBottom="24dp"
-                    tools:ignore="RelativeOverlap" />
-                <ImageView
-                    android:id="@+id/settings"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
-                    android:src="@drawable/settings"
-                    android:layout_marginRight="24dp"
-                    tools:ignore="ContentDescription"/>
-            </RelativeLayout>
-
-            <LinearLayout
-                android:id="@+id/container"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:showDividers="middle"
-                android:divider="?android:dividerHorizontal"
-                android:animateLayoutChanges="true"
-                android:paddingLeft="24dp"
-                android:paddingRight="24dp"/>
-        </LinearLayout>
     </ScrollView>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.1dp"
-        android:background="#ccc"/>
 
     <EditText
         android:id="@+id/new_task"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#fff"
-        android:textColor="#000"
-        android:paddingTop="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
+        android:background="@drawable/rounded_bg"
         android:hint="@string/new_task"
+        android:textColor="@android:color/black"
+        android:layout_marginTop="16dp"
+        android:padding="7dp"
         android:imeOptions="actionDone"
         android:singleLine="true"/>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="72dp"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginRight="16dp"
-        android:layout_marginLeft="16dp"
-        android:gravity="right">
+        android:layout_marginTop="16dp"
+        android:gravity="end">
         <Button
             android:id="@+id/input_ok"
-            android:layout_width="100dp"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="@string/save"
+            android:textAllCaps="true"
             android:layout_gravity="center"
-            android:background="@drawable/dialog_button"
-            android:textColor="#000"
+            android:background="@drawable/button_gradient"
+            android:textColor="@android:color/black"
             android:textSize="20sp"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:layout_marginEnd="8dp"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="3dp"
+            style="?android:attr/buttonBarButtonStyle"/>
 
         <Button
             android:id="@+id/input_add"
-            android:layout_width="100dp"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="@string/add"
+            android:textAllCaps="true"
             android:layout_gravity="center"
-            android:background="@drawable/dialog_button"
+            android:background="@drawable/button_gradient"
             android:textColor="@android:color/holo_blue_dark"
             android:textSize="20sp"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:layout_marginStart="8dp"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="3dp"
+            style="?android:attr/buttonBarButtonStyle"/>
     </LinearLayout>
 
 </LinearLayout>

@@ -25,18 +25,20 @@
         android:id="@+id/crushr_listview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="gone"/>
+        android:visibility="gone"
+        android:scrollbarThumbVertical="@null"/>
+
     <TextView
-        android:layout_below="@id/title"
         android:id="@+id/empty"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@id/title"
+        android:gravity="center"
         android:text="@string/empty_task_list"
-        android:textColor="@android:color/black"
-        android:gravity="center"/>
+        android:textColor="@android:color/black"/>
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="3dp"
+        android:layout_height="4dp"
         android:src="@drawable/shadow"
         android:layout_below="@id/title"/>
     <ImageView

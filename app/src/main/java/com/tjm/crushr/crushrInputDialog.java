@@ -38,8 +38,12 @@ public class crushrInputDialog extends Activity {
 
         setContentView(R.layout.crushr_input_dialog);
 
-        mContainerView = (LinearLayout)findViewById(R.id.container);
-        newTask = (EditText)findViewById(R.id.new_task);
+        int width = (int)(getResources().getDisplayMetrics().widthPixels*0.85);
+        int height = (int)(getResources().getDisplayMetrics().heightPixels*0.85);
+        getWindow().setLayout(width, height);
+
+        mContainerView = findViewById(R.id.container);
+        newTask = findViewById(R.id.new_task);
         tasks = new ArrayList<>();
         appWidgetId = getIntent().getExtras().getInt(AppWidgetManager.EXTRA_APPWIDGET_ID);
         newTask.setOnEditorActionListener((v, actionId, event) -> {

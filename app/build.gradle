@@ -5,7 +5,7 @@ android {
 
     defaultConfig {
         applicationId "com.tjm.crushr"
-        minSdkVersion 14
+        minSdkVersion 17
         targetSdkVersion 32
         versionCode 3
         versionName "1.2"
@@ -17,6 +17,5 @@ android {
 }
 
 dependencies {
-    // implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.4.2'
 }
