@@ -83,14 +83,14 @@ public class crushrInputDialog extends Activity {
             finish();
         });
 
-        findViewById(R.id.input_add).setOnClickListener(view -> {
-            String task = newTask.getText().toString().trim();
-            if(task.isEmpty()) {
-                Toast.makeText(getApplicationContext(), getString(R.string.empty_task_error), Toast.LENGTH_LONG).show();
-            } else {
-                PrefUtils.addItem(getApplicationContext(), task, appWidgetId);
-                addItem(task);
+        findViewById(R.id.input_add).setOnClickListener(view -> affirmativeAction());
+
+        // handles Enter key action
+        newTask.setOnEditorActionListener((v, actionId, event) -> {
+            if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
+                affirmativeAction();
             }
+            return true;
         });
     }
 
@@ -118,5 +118,15 @@ public class crushrInputDialog extends Activity {
         newTask.setText("");
 
         mContainerView.addView(newView, 0);
+    }
+
+    private void affirmativeAction() {
+        String task = newTask.getText().toString().trim();
+        if(task.isEmpty()) {
+            Toast.makeText(getApplicationContext(), getString(R.string.empty_task_error), Toast.LENGTH_LONG).show();
+        } else {
+            PrefUtils.addItem(getApplicationContext(), task, appWidgetId);
+            addItem(task);
+        }
     }
 }
