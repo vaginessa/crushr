@@ -46,14 +46,12 @@ public class crushrInputDialog extends Activity {
         newTask = findViewById(R.id.new_task);
         tasks = new ArrayList<>();
         appWidgetId = getIntent().getExtras().getInt(AppWidgetManager.EXTRA_APPWIDGET_ID);
+
         newTask.setOnEditorActionListener((v, actionId, event) -> {
-            if (actionId == EditorInfo.IME_ACTION_DONE || event == null || event.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
-                String task = newTask.getText().toString().trim();
-                PrefUtils.addItem(getApplicationContext(), task, appWidgetId);
-                addItem(task);
-                return true;
+            if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
+                affirmativeAction();
             }
-            return false;
+            return true;
         });
 
         SharedPreferences prefs = getSharedPreferences(crushrProvider.SHARED_PREF_TAG, MODE_PRIVATE);
@@ -84,14 +82,6 @@ public class crushrInputDialog extends Activity {
         });
 
         findViewById(R.id.input_add).setOnClickListener(view -> affirmativeAction());
-
-        // handles Enter key action
-        newTask.setOnEditorActionListener((v, actionId, event) -> {
-            if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
-                affirmativeAction();
-            }
-            return true;
-        });
     }
 
     @Override
@@ -123,7 +113,7 @@ public class crushrInputDialog extends Activity {
     private void affirmativeAction() {
         String task = newTask.getText().toString().trim();
         if(task.isEmpty()) {
-            Toast.makeText(getApplicationContext(), getString(R.string.empty_task_error), Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), getString(R.string.empty_task_error), Toast.LENGTH_SHORT).show();
         } else {
             PrefUtils.addItem(getApplicationContext(), task, appWidgetId);
             addItem(task);

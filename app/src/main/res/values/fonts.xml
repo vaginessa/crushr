@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- strings for layout file -->
+    <string name="sans_serif">Sans Serif</string>
+    <string name="sans_serif_thin">Sans Serif Thin</string>
+    <string name="sans_serif_light">Sans Serif Light</string>
+    <string name="sans_serif_medium">Sans Serif Medium</string>
+    <string name="sans_serif_black">Sans Serif Black</string>
+    <string name="sans_serif_condensed">Sans Serif Condensed</string>
+    <string name="sans_serif_condensed_light">Sans Serif Condensed Light</string>
+    <string name="sans_serif_condensed_medium">Sans Serif Condensed Medium</string>
+    <string name="serif">Serif</string>
+    <string name="monospace">Monospace</string>
+    <string name="serif_monospace">Serif Monospace</string>
+    <string name="casual">Casual</string>
+    <string name="cursive">Cursive</string>
+    <string name="sans_serif_smallcaps">Sans Serif SmallCaps</string>
+
+    <!-- strings to fetch the font file name -->
+    <string name="sansSerif">sans-serif</string>
+    <string name="sansSerifThin">sans-serif-thin</string>
+    <string name="sansSerifLight">sans-serif-light</string>
+    <string name="sansSerifMedium">sans-serif-medium</string>
+    <string name="sansSerifBlack">sans-serif-black</string>
+    <string name="sansSerifCondensed">sans-serif-condensed</string>
+    <string name="sansSerifCondensedLight">sans-serif-condensed-light</string>
+    <string name="sansSerifCondensedMedium">sans-serif-condensed-medium</string>
+    <string name="seriF">serif</string>
+    <string name="monospacE">monospace</string>
+    <string name="serifMonospace">serif-monospace</string>
+    <string name="casuaL">casual</string>
+    <string name="cursivE">cursive</string>
+    <string name="sansSerifSmallcaps">sans-serif-smallcaps</string>
+</resources>

@@ -4,7 +4,7 @@
     android:id="@+id/widget"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffeeeeee">
+    android:background="#00eeeeee">
 
     <FrameLayout
         android:id="@+id/title"
@@ -71,9 +71,10 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:src="@drawable/add_button"/>
+
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/add_button_cross"/>
+            android:src="@drawable/add_button_cross" />
     </RelativeLayout>
 </RelativeLayout>

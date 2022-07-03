@@ -8,12 +8,6 @@
         android:icon="@drawable/ic_launcher"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".crushrInputDialog"
-            android:launchMode="singleInstance"
-            android:theme="@style/ThemeDialogCustom"
-            android:excludeFromRecents="true">
-        </activity>
-
         <activity android:name=".crushrConfigActivity"
             android:exported="false">
             <intent-filter>
@@ -21,7 +15,25 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".crushrInputDialog"
+            android:launchMode="singleInstance"
+            android:theme="@style/ThemeDialogCustom"
+            android:excludeFromRecents="true">
+        </activity>
+
         <activity android:name=".crushrDeleteDialog"
+            android:launchMode="singleInstance"
+            android:theme="@style/ThemeDialogCustom"
+            android:excludeFromRecents="true">
+        </activity>
+
+        <activity android:name=".primaryColorDialog"
+            android:launchMode="singleInstance"
+            android:theme="@style/ThemeDialogCustom"
+            android:excludeFromRecents="true">
+        </activity>
+
+        <activity android:name=".secondaryColorDialog"
             android:launchMode="singleInstance"
             android:theme="@style/ThemeDialogCustom"
             android:excludeFromRecents="true">

@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.view.Window;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * Created by cymak on 9/30/14.
@@ -38,6 +39,8 @@ public class crushrDeleteDialog extends Activity {
             String copyTask = message.getText().toString();
             ClipData clipData = ClipData.newPlainText("copyTask", copyTask);
             clipBoard.setPrimaryClip(clipData);
+
+            Toast.makeText(getApplicationContext(), getString(R.string.text_copied_toast), Toast.LENGTH_SHORT).show();
         });
 
         findViewById(R.id.input_cancel).setOnClickListener(view -> finish());
