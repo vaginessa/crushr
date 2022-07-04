@@ -39,7 +39,7 @@ public class crushrConfigActivity extends Activity {
             startActivity(configIntent);
         });
 
-        findViewById(R.id.input_save).setOnClickListener(v -> {
+        findViewById(R.id.configs_apply).setOnClickListener(v -> {
             AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(getApplicationContext());
             crushrProvider.updateAppWidget(getApplicationContext(), appWidgetManager, appWidgetId);
 

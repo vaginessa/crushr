@@ -72,27 +72,22 @@
 
     </RelativeLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="end">
+        android:layout_height="match_parent">
 
         <Button
-            android:id="@+id/input_save"
-            android:layout_width="wrap_content"
+            android:id="@+id/configs_apply"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
             android:background="@drawable/button_gradient"
             android:gravity="center"
-            android:paddingHorizontal="16dp"
-            android:paddingVertical="3dp"
-            android:text="@string/save"
-            android:textAllCaps="true"
+            android:layout_alignParentBottom="true"
+            android:paddingVertical="24dp"
+            android:text="@string/apply_configs"
             android:textColor="@android:color/holo_blue_dark"
             android:textSize="20sp"
             style="?android:attr/buttonBarButtonStyle" />
-
-    </LinearLayout>
+    </RelativeLayout>
 
 </LinearLayout>
