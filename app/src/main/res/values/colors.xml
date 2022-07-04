@@ -6,30 +6,30 @@
     <color name="pressed">#1f84ffff</color>
 
     <!-- Primary color set -->
-    <color name="primary_color_1">#ff00b0ff</color>
-    <color name="primary_color_2">#fff44336</color>
-    <color name="primary_color_3">#ff3f51b5</color>
-    <color name="primary_color_4">#ffe91e63</color>
-    <color name="primary_color_5">#ff607d8b</color>
-    <color name="primary_color_6">#ffffeb3b</color>
-    <color name="primary_color_7">#ffff9800</color>
-    <color name="primary_color_8">#ff009688</color>
-    <color name="primary_color_9">#ffcddc39</color>
-    <color name="primary_color_10">#ff795548</color>
-    <color name="primary_color_11">#ff000000</color>
-    <color name="primary_color_12">#ffd500f9</color>
+    <color name="primary_color_1">#80D8FF</color>
+    <color name="primary_color_2">#8C9EFF</color>
+    <color name="primary_color_3">#B388FF</color>
+    <color name="primary_color_4">#EA80FC</color>
+    <color name="primary_color_5">#FF80AB</color>
+    <color name="primary_color_6">#FF9E80</color>
+    <color name="primary_color_7">#FFD180</color>
+    <color name="primary_color_8">#FFE57F</color>
+    <color name="primary_color_9">#F4FF81</color>
+    <color name="primary_color_10">#CCFF90</color>
+    <color name="primary_color_11">#B9F6CA</color>
+    <color name="primary_color_12">#A7FFEB</color>
 
     <!-- Secondary color set -->
-    <color name="secondary_color_1">#ff84ffff</color>
-    <color name="secondary_color_2">#ff64ffda</color>
-    <color name="secondary_color_3">#ff00e676</color>
-    <color name="secondary_color_4">#ffe040fb</color>
-    <color name="secondary_color_5">#ffff4081</color>
-    <color name="secondary_color_6">#ffff5252</color>
-    <color name="secondary_color_7">#ff7c4dff</color>
-    <color name="secondary_color_8">#ffffff00</color>
-    <color name="secondary_color_9">#ff78909c</color>
-    <color name="secondary_color_10">#ffff9100</color>
-    <color name="secondary_color_11">#ffffffff</color>
-    <color name="secondary_color_12">#ff76ff03</color>
+    <color name="secondary_color_1">#80DEEA</color>
+    <color name="secondary_color_2">#90CAF9</color>
+    <color name="secondary_color_3">#9FA8DA</color>
+    <color name="secondary_color_4">#CE93D8</color>
+    <color name="secondary_color_5">#F48FB1</color>
+    <color name="secondary_color_6">#EF9A9A</color>
+    <color name="secondary_color_7">#FFCC80</color>
+    <color name="secondary_color_8">#FFE082</color>
+    <color name="secondary_color_9">#FFF59D</color>
+    <color name="secondary_color_10">#C5E1A5</color>
+    <color name="secondary_color_11">#A5D6A7</color>
+    <color name="secondary_color_12">#80CBC4</color>
 </resources>
