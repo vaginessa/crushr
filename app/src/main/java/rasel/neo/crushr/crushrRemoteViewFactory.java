@@ -1,4 +1,4 @@
-package com.tjm.crushr;
+package rasel.neo.crushr;
 
 import android.appwidget.AppWidgetManager;
 import android.content.Context;

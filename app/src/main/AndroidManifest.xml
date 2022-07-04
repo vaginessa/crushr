@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.tjm.crushr">
+    package="rasel.neo.crushr">
 
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
@@ -9,38 +9,38 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".crushrConfigActivity"
+        <activity android:name="rasel.neo.crushr.crushrConfigActivity"
             android:exported="false">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE"/>
             </intent-filter>
         </activity>
 
-        <activity android:name=".crushrInputDialog"
+        <activity android:name="rasel.neo.crushr.crushrInputDialog"
             android:launchMode="singleInstance"
             android:theme="@style/ThemeDialogCustom"
             android:excludeFromRecents="true">
         </activity>
 
-        <activity android:name=".crushrDeleteDialog"
+        <activity android:name="rasel.neo.crushr.crushrDeleteDialog"
             android:launchMode="singleInstance"
             android:theme="@style/ThemeDialogCustom"
             android:excludeFromRecents="true">
         </activity>
 
-        <activity android:name=".primaryColorDialog"
+        <activity android:name="rasel.neo.crushr.primaryColorDialog"
             android:launchMode="singleInstance"
             android:theme="@style/ThemeDialogCustom"
             android:excludeFromRecents="true">
         </activity>
 
-        <activity android:name=".secondaryColorDialog"
+        <activity android:name="rasel.neo.crushr.secondaryColorDialog"
             android:launchMode="singleInstance"
             android:theme="@style/ThemeDialogCustom"
             android:excludeFromRecents="true">
         </activity>
 
-        <receiver android:name=".crushrProvider"
+        <receiver android:name="rasel.neo.crushr.crushrProvider"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -51,7 +51,7 @@
         </receiver>
 
         <service
-            android:name=".crushrWidgetService"
+            android:name="rasel.neo.crushr.crushrWidgetService"
             android:exported="false"
             android:permission="android.permission.BIND_REMOTEVIEWS" />
 

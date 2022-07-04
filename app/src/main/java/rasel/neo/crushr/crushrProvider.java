@@ -1,4 +1,4 @@
-package com.tjm.crushr;
+package rasel.neo.crushr;
 
 import android.annotation.SuppressLint;
 import android.app.PendingIntent;
