@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white"
-    android:padding="16dp">
+    android:padding="24dp">
 
     <TextView
         android:layout_width="match_parent"
@@ -14,34 +14,63 @@
         android:textStyle="bold"
         android:textSize="28sp"
         android:gravity="center"
-        android:layout_marginTop="8dp"
         android:layout_marginBottom="40dp"/>
 
-    <TextView
-        android:id="@+id/primary_color_dialog"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-smallcaps"
-        android:text="@string/primary_color"
-        android:textColor="@android:color/black"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        android:padding="22dp"
-        android:clickable="true"
-        android:focusable="true" />
+        android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/secondary_color_dialog"
+        <TextView
+            android:id="@+id/primary_color_dialog"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:fontFamily="sans-serif-smallcaps"
+            android:text="@string/primary_color"
+            android:textColor="@android:color/black"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:padding="24dp"/>
+
+        <View
+            android:id="@+id/primary_color_preview"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-smallcaps"
-        android:text="@string/secondary_color"
-        android:textColor="@android:color/black"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        android:padding="22dp"
-        android:clickable="true"
-        android:focusable="true" />
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/secondary_color_dialog"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:fontFamily="sans-serif-smallcaps"
+            android:text="@string/secondary_color"
+            android:textColor="@android:color/black"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:padding="24dp"/>
+
+        <View
+            android:id="@+id/secondary_color_preview"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"/>
+
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -50,7 +79,7 @@
         android:gravity="end">
 
         <Button
-            android:id="@+id/input_ok"
+            android:id="@+id/input_save"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"

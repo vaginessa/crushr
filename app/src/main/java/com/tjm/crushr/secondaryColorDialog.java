@@ -211,9 +211,4 @@ public class secondaryColorDialog extends Activity {
                 break;
         }
     }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-    }
 }

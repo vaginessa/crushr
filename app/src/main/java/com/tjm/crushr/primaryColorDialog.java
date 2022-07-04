@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.appwidget.AppWidgetManager;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -210,10 +211,5 @@ public class primaryColorDialog extends Activity {
                 previewPrimary.setBackgroundColor(res.getColor(R.color.primary_color_12));
                 break;
         }
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
     }
 }
