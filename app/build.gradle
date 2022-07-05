@@ -8,7 +8,7 @@ android {
         minSdkVersion 17
         targetSdkVersion 32
         versionCode 4
-        versionName "jul22"
+        versionName "05072022"
     }
     buildTypes {
         release {
