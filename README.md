@@ -7,7 +7,7 @@
 		<img src='https://img.shields.io/badge/Android-3DDC84.svg?style=for-the-badge&logo=android&logoColor=white&style=plastic' alt='OS'>
 		<img src='https://img.shields.io/badge/SDK-32-green.svg' alt='SDK'>
 		<a href='https://github.com/iamrasel/crushr/blob/master/LICENSE.md'><img src='https://img.shields.io/badge/License-MIT-blue.svg'></a>
-		<a href='https://github.com/iamrasel/crushr/actions'><img src='https://github.com/iamrasel/crushr/workflows/Build/badge.svg?branch=master&event=push'></a>
+		<a href='https://github.com/iamrasel/crushr/actions'><img src='https://github.com/iamrasel/crushr/workflows/Build_Pushed/badge.svg?branch=master&event=push'></a>
 		<br>
 		<a href='https://github.com/iamrasel/crushr/releases'><img src='https://img.shields.io/github/release/iamrasel/crushr.svg' ></a>
 		<img src='https://img.shields.io/github/downloads/iamrasel/crushr/total.svg' alt='Downloads'>

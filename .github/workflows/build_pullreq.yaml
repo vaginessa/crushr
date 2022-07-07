@@ -1,7 +1,7 @@
-name: Build_Pushed
+name: Build_pullReq
 
 on:
-  push:
+  pull_request:
     branches: [master]
     paths-ignore:
           - "README*.md"
@@ -10,7 +10,7 @@ on:
 
 jobs:
   build:
-    name: Build, sign & upload
+    name: Build & upload
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -33,20 +33,10 @@ jobs:
         run: chmod +x gradlew
 
       - name: Build
-        run: ./gradlew assembleRelease
-
-      - name: Sign
-        id: sign_apk
-        uses: r0adkll/sign-android-release@v1
-        with:
-          releaseDirectory: app/build/outputs/apk/release
-          signingKeyBase64: ${{ secrets.SIGNINGKEY_BASE64 }}
-          alias: ${{ secrets.KEY_ALIAS }}
-          keyStorePassword: ${{ secrets.KEY_STORE_PASSWORD }}
-          keyPassword: ${{ secrets.KEY_PASSWORD }}
+        run: ./gradlew assembleDebug
 
       - name: Upload
         uses: actions/upload-artifact@v2
         with:
-          name: crushr-release
-          path: ${{steps.sign_apk.outputs.signedReleaseFile}}
+          name: crushr-debug
+          path: app/build/outputs/apk/debug/*.apk
