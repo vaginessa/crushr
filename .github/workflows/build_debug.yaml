@@ -1,14 +1,16 @@
 name: Build
 
 on:
-  push:
-    branches: [master]
   pull_request:
     branches: [master]
+    paths-ignore:
+          - "README*.md"
+          - "LICENSE.md"
+          - "assets/**"
 
 jobs:
   build:
-    name: Build & sign apk
+    name: Build & upload
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -30,21 +32,11 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
-      - name: Build the apk
-        run: ./gradlew assembleRelease
+      - name: Build
+        run: ./gradlew assembleDebug
 
-      - name: Sign the apk
-        id: sign_apk
-        uses: r0adkll/sign-android-release@v1
-        with:
-          releaseDirectory: app/build/outputs/apk/release
-          signingKeyBase64: ${{ secrets.SIGNINGKEY_BASE64 }}
-          alias: ${{ secrets.KEY_ALIAS }}
-          keyStorePassword: ${{ secrets.KEY_STORE_PASSWORD }}
-          keyPassword: ${{ secrets.KEY_PASSWORD }}
-
-      - name: Upload the signed apk
+      - name: Upload
         uses: actions/upload-artifact@v2
         with:
-          name: crushr-release
-          path: ${{steps.sign_apk.outputs.signedReleaseFile}}
+          name: crushr-debug
+          path: app/build/outputs/apk/debug/*.apk

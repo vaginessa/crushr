@@ -10,8 +10,29 @@ android {
         versionCode 4
         versionName "05072022"
     }
+
     buildTypes {
+        debug {
+            minifyEnabled false
+            shrinkResources false
+            applicationIdSuffix ".debug"
+        }
         release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    applicationVariants.all { variant ->
+        if (variant.buildType.name == "release") {
+            variant.outputs.each { output ->
+                if (output.outputFileName.endsWith('.apk')) {
+                    def applicationId = defaultConfig.applicationId
+                    def versionCode = defaultConfig.versionCode
+                    output.outputFileName = "${applicationId}_v${versionCode}.apk"
+                }
+            }
         }
     }
 }
