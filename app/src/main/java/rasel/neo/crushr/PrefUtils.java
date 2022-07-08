@@ -1,6 +1,8 @@
 package rasel.neo.crushr;
 
 import android.annotation.SuppressLint;
+import android.appwidget.AppWidgetManager;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -64,5 +66,12 @@ public class PrefUtils {
         if (blue.length() == 1)
             blue = "0" + blue;
         return "#" + alpha + red + green + blue;
+    }
+
+    public static void refreshListView(Context ctx, int id) {
+        AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(ctx);
+        int[] appWidgetIds = appWidgetManager.getAppWidgetIds(new ComponentName(ctx, crushrProvider.class));
+        appWidgetManager.notifyAppWidgetViewDataChanged(appWidgetIds, R.id.crushr_listview);
+        crushrProvider.updateAppWidget(ctx, appWidgetManager, id);
     }
 }

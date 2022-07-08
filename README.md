@@ -17,7 +17,7 @@
 
 ## Features
 - [x] Supports from Android 4.2 (SDK 17 JB)
-- [x] Add and delete task
+- [x] Add, remove and edit task
 - [x] Copy task text
 - [x] Change primary and secondary color
 - [x] Built-in material colors to select from
@@ -43,7 +43,6 @@ There's another option to get this app- fork and build it. This project is very 
   - Tasks showing in random order
   - Bugs, those are playing with me
 - Features:
-  - Edit task
   - Show or hide the 'crushr' header
   - Widget's background color changing option
   - Task text's color changing option
@@ -56,7 +55,9 @@ There's another option to get this app- fork and build it. This project is very 
 If you want to contribute to this project, I would suggest you to start from the [TODO](#todo) list first. Then you can do whatever comes up to your mind.
 
 ## Credits
-As you can see, this is a fork of [this](https://github.com/tjmolinski/crushr) same titled project, which was abandoned back in 2015. I found this app on [F-droid](https://f-droid.org/en/packages/com.tjm.crushr), used it and then decided to modify it to fulfill my needs. But then I thought, why not share it with others?
+  **Project:** As you can see, this is a fork of [this](https://github.com/tjmolinski/crushr) same titled project, which was abandoned back in 2015. I found this app on [F-droid](https://f-droid.org/en/packages/com.tjm.crushr), used it and then decided to modify it to fulfill my needs. But then I thought, why not share it with others?
+
+  **Launcher Icon:** The tick sign on the launcher icon was collected from [Flaticon](https://www.flaticon.com/free-icons/check). Then I changed the color and flipped it horizontally.
 
 ## License
 ```

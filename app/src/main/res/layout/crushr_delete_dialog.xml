@@ -36,7 +36,7 @@
             android:orientation="horizontal"
             android:layout_marginTop="8dp">
 
-            <TextView
+            <EditText
                 android:id="@+id/message"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -46,7 +46,9 @@
                 android:scrollbarStyle="outsideInset"
                 android:scrollbars="vertical"
                 android:textColor="@android:color/holo_red_light"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:autofillHints=""
+                android:inputType="text" />
 
             <ImageView
                 android:id="@+id/copy_btn"
@@ -85,13 +87,28 @@
             style="?android:attr/buttonBarButtonStyle"/>
 
         <Button
+            android:id="@+id/edit_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/edit"
+            android:layout_gravity="center"
+            android:background="@drawable/button_gradient"
+            android:textColor="@android:color/holo_blue_dark"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:layout_marginStart="8dp"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="3dp"
+            style="?android:attr/buttonBarButtonStyle"/>
+
+        <Button
             android:id="@+id/input_ok"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@android:string/ok"
             android:layout_gravity="center"
             android:background="@drawable/button_gradient"
-            android:textColor="@android:color/holo_blue_dark"
+            android:textColor="@android:color/holo_red_light"
             android:textSize="20sp"
             android:gravity="center"
             android:layout_marginStart="8dp"

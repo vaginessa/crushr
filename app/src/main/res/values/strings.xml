@@ -6,6 +6,7 @@
     <string name="configs_title">Configurations</string>
     <string name="delete_task_message">Are you sure you want to remove the following task?</string>
     <string name="delete_task_title">Delete Task</string>
+    <string name="edit">Edit</string>
     <string name="empty_task_error">Please enter a task first</string>
     <string name="empty_task_list">No task to crush!</string>
     <string name="manage_tasks">Manage Tasks</string>

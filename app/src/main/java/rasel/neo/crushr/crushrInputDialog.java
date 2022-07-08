@@ -2,7 +2,6 @@ package rasel.neo.crushr;
 
 import android.app.Activity;
 import android.appwidget.AppWidgetManager;
-import android.content.ComponentName;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -66,18 +65,8 @@ public class crushrInputDialog extends Activity {
             startActivity(configIntent);
         });
 
-        findViewById(R.id.input_ok).setOnClickListener(view -> {
-            String task = newTask.getText().toString().trim();
-            if(!task.isEmpty()) {
-                PrefUtils.addItem(getApplicationContext(), task, appWidgetId);
-                addItem(task);
-            }
-
-            AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(getApplicationContext());
-            int[] appWidgetIds = appWidgetManager.getAppWidgetIds(new ComponentName(getApplicationContext(), crushrProvider.class));
-            appWidgetManager.notifyAppWidgetViewDataChanged(appWidgetIds, R.id.crushr_listview);
-            crushrProvider.updateAppWidget(getApplicationContext(), appWidgetManager, appWidgetId);
-
+        findViewById(R.id.input_save).setOnClickListener(view -> {
+            PrefUtils.refreshListView(getApplicationContext(), appWidgetId);
             finish();
         });
 
@@ -86,9 +75,7 @@ public class crushrInputDialog extends Activity {
 
     @Override
     public void onBackPressed() {
-        AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(getApplicationContext());
-        int[] appWidgetIds = appWidgetManager.getAppWidgetIds(new ComponentName(getApplicationContext(), crushrProvider.class));
-        appWidgetManager.notifyAppWidgetViewDataChanged(appWidgetIds, R.id.crushr_listview);
+        PrefUtils.refreshListView(getApplicationContext(), appWidgetId);
         super.onBackPressed();
     }
 

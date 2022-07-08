@@ -4,11 +4,10 @@ import android.app.Activity;
 import android.appwidget.AppWidgetManager;
 import android.content.ClipData;
 import android.content.ClipboardManager;
-import android.content.ComponentName;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.view.Window;
-import android.widget.TextView;
+import android.widget.EditText;
 import android.widget.Toast;
 
 /**
@@ -30,7 +29,7 @@ public class crushrDeleteDialog extends Activity {
         final String task = getIntent().getExtras().getString(crushrProvider.EXTRA_WORD);
         final int appWidgetId = getIntent().getExtras().getInt(AppWidgetManager.EXTRA_APPWIDGET_ID);
 
-        TextView message = (TextView) findViewById(R.id.message);
+        EditText message = findViewById(R.id.message);
         message.setMovementMethod(new ScrollingMovementMethod());
         message.setText(task);
 
@@ -45,14 +44,19 @@ public class crushrDeleteDialog extends Activity {
 
         findViewById(R.id.input_cancel).setOnClickListener(view -> finish());
 
+        findViewById(R.id.edit_btn).setOnClickListener(view -> {
+            String editedTask = message.getText().toString().trim();
+            if(!editedTask.isEmpty()) {
+                PrefUtils.removeItem(getApplicationContext(), task, appWidgetId);
+                PrefUtils.addItem(getApplicationContext(), editedTask, appWidgetId);
+                PrefUtils.refreshListView(getApplicationContext(), appWidgetId);
+            }
+            finish();
+        });
+
         findViewById(R.id.input_ok).setOnClickListener(view -> {
             PrefUtils.removeItem(getApplicationContext(), task, appWidgetId);
-
-            AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(getApplicationContext());
-            int[] appWidgetIds = appWidgetManager.getAppWidgetIds(new ComponentName(getApplicationContext(), crushrProvider.class));
-            appWidgetManager.notifyAppWidgetViewDataChanged(appWidgetIds, R.id.crushr_listview);
-            crushrProvider.updateAppWidget(getApplicationContext(), appWidgetManager, appWidgetId);
-
+            PrefUtils.refreshListView(getApplicationContext(), appWidgetId);
             finish();
         });
     }
