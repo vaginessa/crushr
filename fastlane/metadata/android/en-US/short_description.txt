@@ -1,0 +1,1 @@
+A widget based TODO manager app for android.

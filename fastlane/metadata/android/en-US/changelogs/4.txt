@@ -1,0 +1,9 @@
+This is the first release in this repository, which contains some visual and action changes compared to the original repository. The changes are:
+
+- Package name and app icon
+- Widget preview
+- Some strings and visuals
+- Primary and Secondary color sets
+- Configurations screen
+- Added copy button in Delete Task screen
+- Added custom color input system

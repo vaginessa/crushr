@@ -32,19 +32,20 @@
 As per version 5 (14072022). Click on the image to enlarge it.
 
 <div align='center'>
-	<img src='assets/shot_01.png' width=100>
-	<img src='assets/shot_02.png' width=100>
-	<img src='assets/shot_03.png' width=100>
-	<img src='assets/shot_04.png' width=100>
-	<img src='assets/shot_05.png' width=100>
-	<img src='assets/shot_06.png' width=100>
+	<img src='fastlane/metadata/android/en-US/images/phoneScreenshots/1.png' width=100>
+	<img src='fastlane/metadata/android/en-US/images/phoneScreenshots/2.png' width=100>
+	<img src='fastlane/metadata/android/en-US/images/phoneScreenshots/3.png' width=100>
+	<img src='fastlane/metadata/android/en-US/images/phoneScreenshots/4.png' width=100>
+	<img src='fastlane/metadata/android/en-US/images/phoneScreenshots/5.png' width=100>
+	<img src='fastlane/metadata/android/en-US/images/phoneScreenshots/6.png' width=100>
 </div>
 
 ## Download
-Currently, only one option is available for you to download this app, and it's Github release. This release version was built using Github's workflow, then I manually published the apk file as a release.
+Currently, you can download the app either from Github releases or from IzzyOnDroid. The Github release version was built using Github's workflow, then I manually published the apk file as a release.
 
 <div align='center'>
-	<a href='https://github.com/iamrasel/crushr/releases/latest'><img src='https://camo.githubusercontent.com/70bffd8873ab81e1bb0bccc44e488c3a989e3bd5/68747470733a2f2f692e6962622e636f2f71306d6463345a2f6765742d69742d6f6e2d6769746875622e706e67' width='220' alt='Get it on Github'></a>
+	<a href='https://github.com/iamrasel/crushr/releases/latest'><img src='https://camo.githubusercontent.com/70bffd8873ab81e1bb0bccc44e488c3a989e3bd5/68747470733a2f2f692e6962622e636f2f71306d6463345a2f6765742d69742d6f6e2d6769746875622e706e67' width='200' alt='Github Release'></a>
+	<a href='https://apt.izzysoft.de/fdroid/index/apk/rasel.neo.crushr'><img src='https://gitlab.com/IzzyOnDroid/repo/-/raw/master/assets/IzzyOnDroid.png' width='200' alt='IzzyOnDroid'></a>
 </div>
 
 You can also download the latest workflow build by Github. To do that, head over to the [Actions](https://github.com/iamrasel/crushr/actions) tab and then select the latest run from there. You must be signed in to Github to download any build from there.

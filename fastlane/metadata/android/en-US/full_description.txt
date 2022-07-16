@@ -1,0 +1,12 @@
+<i>crushr</i> is a widget based to-do manager. It is a handy tool to manage daily todos.
+
+<br><b>Features:</b>
+
+* Add, remove and edit task
+* Copy, share or quick tweet task text
+* Pin task as a persistent notification
+* Control task from notification panel
+* Multiple customization option
+* Lightweight and clean interface
+
+More to come.

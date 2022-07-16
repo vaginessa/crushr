@@ -1,0 +1,5 @@
+- Launcher icon changed
+- Visual changes
+- New: Share, Tweet and Pin button for single task
+- Control task from notification panel
+- Reset button for configurations
