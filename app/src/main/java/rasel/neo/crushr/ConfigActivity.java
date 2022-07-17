@@ -45,8 +45,8 @@ public class ConfigActivity extends AppCompatActivity {
         });
 
         findViewById(R.id.btn_reset).setOnClickListener(v -> {
-            BaseUtils.setPrimaryColor(getApplicationContext(), ContextCompat.getColor(getApplicationContext(), R.color.primary_color_1), appWidgetId);
-            BaseUtils.setSecondaryColor(getApplicationContext(), ContextCompat.getColor(getApplicationContext(), R.color.secondary_color_1), appWidgetId);
+            BaseUtils.setPrimaryColor(getApplicationContext(), ContextCompat.getColor(getApplicationContext(), R.color.color_22), appWidgetId);
+            BaseUtils.setSecondaryColor(getApplicationContext(), ContextCompat.getColor(getApplicationContext(), R.color.color_19), appWidgetId);
             loadPreviews();
         });
 
@@ -63,8 +63,8 @@ public class ConfigActivity extends AppCompatActivity {
 
     private void loadPreviews() {
         SharedPreferences prefs = getApplicationContext().getSharedPreferences(CrushrProvider.SHARED_PREF_TAG, Context.MODE_PRIVATE);
-        int primaryColor = prefs.getInt(CrushrProvider.SHARED_PREF_PRIMARY_COLOR + appWidgetId, ContextCompat.getColor(getApplicationContext(), R.color.primary_color_1));
-        int secondaryColor = prefs.getInt(CrushrProvider.SHARED_PREF_SECONDARY_COLOR + appWidgetId, ContextCompat.getColor(getApplicationContext(), R.color.secondary_color_1));
+        int primaryColor = prefs.getInt(CrushrProvider.SHARED_PREF_PRIMARY_COLOR + appWidgetId, ContextCompat.getColor(getApplicationContext(), R.color.color_22));
+        int secondaryColor = prefs.getInt(CrushrProvider.SHARED_PREF_SECONDARY_COLOR + appWidgetId, ContextCompat.getColor(getApplicationContext(), R.color.color_19));
 
         GradientDrawable borderPrimary = new GradientDrawable();
         borderPrimary.setShape(GradientDrawable.OVAL);

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- first row -->
+    <color name="color_1">#999999</color>   <!-- white -->
+    <color name="color_2">#FF8A65</color>   <!-- yellow -->
+    <color name="color_3">#4DB6AC</color>   <!-- green -->
+    <color name="color_4">#B388FF</color>   <!-- red -->
+    <color name="color_5">#7986CB</color>   <!-- blue -->
+    <color name="color_6">#000000</color>   <!-- black -->
+    <!-- second row -->
+    <color name="color_7">#bbbbbb</color>
+    <color name="color_8">#FFB74D</color>
+    <color name="color_9">#81C784</color>
+    <color name="color_10">#EA80FC</color>
+    <color name="color_11">#64B5F6</color>
+    <color name="color_12">#333333</color>
+    <!-- third row -->
+    <color name="color_13">#dddddd</color>
+    <color name="color_14">#FFD54F</color>
+    <color name="color_15">#AED581</color>
+    <color name="color_16">#FF80AB</color>
+    <color name="color_17">#4FC3F7</color>
+    <color name="color_18">#555555</color>
+    <!-- fourth row -->
+    <color name="color_19">#ffffff</color>
+    <color name="color_20">#FFF176</color>
+    <color name="color_21">#DCE775</color>
+    <color name="color_22">#FF8A80</color>
+    <color name="color_23">#4DD0E1</color>
+    <color name="color_24">#777777</color>
+</resources>

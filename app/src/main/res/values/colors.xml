@@ -1,33 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="color_border">#ff888888</color>
     <color name="btn_pressed">#11000000</color>
-
-    <!-- Primary color set -->
-    <color name="primary_color_1">#80D8FF</color>
-    <color name="primary_color_2">#8C9EFF</color>
-    <color name="primary_color_3">#B388FF</color>
-    <color name="primary_color_4">#EA80FC</color>
-    <color name="primary_color_5">#FF80AB</color>
-    <color name="primary_color_6">#FF9E80</color>
-    <color name="primary_color_7">#FFD180</color>
-    <color name="primary_color_8">#FFE57F</color>
-    <color name="primary_color_9">#F4FF81</color>
-    <color name="primary_color_10">#CCFF90</color>
-    <color name="primary_color_11">#B9F6CA</color>
-    <color name="primary_color_12">#A7FFEB</color>
-
-    <!-- Secondary color set -->
-    <color name="secondary_color_1">#80DEEA</color>
-    <color name="secondary_color_2">#90CAF9</color>
-    <color name="secondary_color_3">#9FA8DA</color>
-    <color name="secondary_color_4">#CE93D8</color>
-    <color name="secondary_color_5">#F48FB1</color>
-    <color name="secondary_color_6">#EF9A9A</color>
-    <color name="secondary_color_7">#FFCC80</color>
-    <color name="secondary_color_8">#FFE082</color>
-    <color name="secondary_color_9">#FFF59D</color>
-    <color name="secondary_color_10">#C5E1A5</color>
-    <color name="secondary_color_11">#A5D6A7</color>
-    <color name="secondary_color_12">#80CBC4</color>
+    <color name="color_border">#ff888888</color>
+    <color name="ic_launcher_background">#ffff9e80</color>
 </resources>

@@ -60,8 +60,8 @@ public class CrushrProvider extends AppWidgetProvider {
             views.setViewVisibility(R.id.crushr_listview, View.VISIBLE);
         }
 
-        int primaryColor = prefs.getInt(CrushrProvider.SHARED_PREF_PRIMARY_COLOR + appWidgetId, ContextCompat.getColor(context, R.color.primary_color_1));
-        int secondaryColor = prefs.getInt(CrushrProvider.SHARED_PREF_SECONDARY_COLOR + appWidgetId, ContextCompat.getColor(context, R.color.secondary_color_1));
+        int primaryColor = prefs.getInt(CrushrProvider.SHARED_PREF_PRIMARY_COLOR + appWidgetId, ContextCompat.getColor(context, R.color.color_22));
+        int secondaryColor = prefs.getInt(CrushrProvider.SHARED_PREF_SECONDARY_COLOR + appWidgetId, ContextCompat.getColor(context, R.color.color_19));
         views.setInt(R.id.title, "setBackgroundColor", primaryColor);
         views.setInt(R.id.add_crushr_button_bg, "setColorFilter", secondaryColor);
 

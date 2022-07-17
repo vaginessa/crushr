@@ -10,7 +10,7 @@
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="30dp"
-        android:background="@color/primary_color_1">
+        android:background="@color/color_1">
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -53,12 +53,10 @@
         android:contentDescription="@null" />
 
     <ImageView
-        android:layout_width="61dp"
+        android:layout_width="51dp"
         android:layout_height="51dp"
-        android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="-1dp"
-        android:layout_marginBottom="5dp"
         android:src="@drawable/shadow_addbtn"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
@@ -66,11 +64,9 @@
 
     <RelativeLayout
         android:id="@+id/add_crushr_button"
-        android:layout_width="60dp"
+        android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
-        android:layout_marginStart="5dp"
         android:layout_marginEnd="-1dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true">

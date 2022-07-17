@@ -9,11 +9,11 @@
     android:padding="16dp">
 
     <TextView
+        android:id="@+id/color_dialog_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:fontFamily="serif"
-        android:text="@string/secondary_color"
         android:textSize="22sp"
         android:textStyle="bold"/>
 
@@ -23,133 +23,250 @@
         android:layout_marginTop="16dp">
 
         <RadioGroup
-            android:id="@+id/secondary_color_selector_first_row"
+            android:id="@+id/first_row"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="horizontal">
-
             <RadioButton
-                android:id="@+id/secondary_color_1"
+                android:id="@+id/color_1"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_margin="4dp"
+                android:background="@drawable/color_1_selector"
+                android:button="@android:color/transparent"
+                android:onClick="onRadioButtonChecked"
+                tools:ignore="UsingOnClickInXml" />
+            <RadioButton
+                android:id="@+id/color_2"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_margin="4dp"
+                android:background="@drawable/color_2_selector"
+                android:button="@android:color/transparent"
+                android:onClick="onRadioButtonChecked"
+                tools:ignore="UsingOnClickInXml" />
+            <RadioButton
+                android:id="@+id/color_3"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_margin="4dp"
+                android:background="@drawable/color_3_selector"
+                android:button="@android:color/transparent"
+                android:onClick="onRadioButtonChecked"
+                tools:ignore="UsingOnClickInXml" />
+            <RadioButton
+                android:id="@+id/color_4"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_margin="4dp"
+                android:background="@drawable/color_4_selector"
+                android:button="@android:color/transparent"
+                android:onClick="onRadioButtonChecked"
+                tools:ignore="UsingOnClickInXml" />
+            <RadioButton
+                android:id="@+id/color_5"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_margin="4dp"
+                android:background="@drawable/color_5_selector"
+                android:button="@android:color/transparent"
+                android:onClick="onRadioButtonChecked"
+                tools:ignore="UsingOnClickInXml" />
+            <RadioButton
+                android:id="@+id/color_6"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_margin="4dp"
+                android:background="@drawable/color_6_selector"
+                android:button="@android:color/transparent"
+                android:onClick="onRadioButtonChecked"
+                tools:ignore="UsingOnClickInXml" />
+        </RadioGroup>
+        <RadioGroup
+            android:id="@+id/second_row"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@+id/first_row"
+            android:gravity="center">
+            <RadioButton
+                android:id="@+id/color_7"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/color_7_selector"
+                android:layout_margin="4dp"
+                android:button="@android:color/transparent"
+                android:onClick="onRadioButtonChecked"
+                tools:ignore="UsingOnClickInXml"/>
+            <RadioButton
+                android:id="@+id/color_8"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/color_8_selector"
+                android:layout_margin="4dp"
+                android:button="@android:color/transparent"
+                android:onClick="onRadioButtonChecked"
+                tools:ignore="UsingOnClickInXml"/>
+            <RadioButton
+                android:id="@+id/color_9"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/color_9_selector"
+                android:layout_margin="4dp"
+                android:button="@android:color/transparent"
+                android:onClick="onRadioButtonChecked"
+                tools:ignore="UsingOnClickInXml"/>
+            <RadioButton
+                android:id="@+id/color_10"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/color_10_selector"
+                android:layout_margin="4dp"
+                android:button="@android:color/transparent"
+                android:onClick="onRadioButtonChecked"
+                tools:ignore="UsingOnClickInXml"/>
+            <RadioButton
+                android:id="@+id/color_11"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/color_11_selector"
+                android:layout_margin="4dp"
+                android:button="@android:color/transparent"
+                android:onClick="onRadioButtonChecked"
+                tools:ignore="UsingOnClickInXml"/>
+            <RadioButton
+                android:id="@+id/color_12"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/color_12_selector"
+                android:layout_margin="4dp"
+                android:button="@android:color/transparent"
+                android:onClick="onRadioButtonChecked"
+                tools:ignore="UsingOnClickInXml"/>
+        </RadioGroup>
+        <RadioGroup
+            android:id="@+id/third_row"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_below="@+id/second_row">
+            <RadioButton
+                android:id="@+id/color_13"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_margin="4dp"
                 android:background="@drawable/color_13_selector"
                 android:button="@android:color/transparent"
-                android:onClick="onSecondaryButtonClicked"
-                android:checked="true"
+                android:onClick="onRadioButtonChecked"
                 tools:ignore="UsingOnClickInXml" />
-
             <RadioButton
-                android:id="@+id/secondary_color_2"
+                android:id="@+id/color_14"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_margin="4dp"
                 android:background="@drawable/color_14_selector"
                 android:button="@android:color/transparent"
-                android:onClick="onSecondaryButtonClicked"
+                android:onClick="onRadioButtonChecked"
                 tools:ignore="UsingOnClickInXml" />
-
             <RadioButton
-                android:id="@+id/secondary_color_3"
+                android:id="@+id/color_15"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_margin="4dp"
                 android:background="@drawable/color_15_selector"
                 android:button="@android:color/transparent"
-                android:onClick="onSecondaryButtonClicked"
+                android:onClick="onRadioButtonChecked"
                 tools:ignore="UsingOnClickInXml" />
-
             <RadioButton
-                android:id="@+id/secondary_color_4"
+                android:id="@+id/color_16"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_margin="4dp"
                 android:background="@drawable/color_16_selector"
                 android:button="@android:color/transparent"
-                android:onClick="onSecondaryButtonClicked"
+                android:onClick="onRadioButtonChecked"
                 tools:ignore="UsingOnClickInXml" />
-
             <RadioButton
-                android:id="@+id/secondary_color_5"
+                android:id="@+id/color_17"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_margin="4dp"
                 android:background="@drawable/color_17_selector"
                 android:button="@android:color/transparent"
-                android:onClick="onSecondaryButtonClicked"
+                android:onClick="onRadioButtonChecked"
                 tools:ignore="UsingOnClickInXml" />
-
             <RadioButton
-                android:id="@+id/secondary_color_6"
+                android:id="@+id/color_18"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_margin="4dp"
                 android:background="@drawable/color_18_selector"
                 android:button="@android:color/transparent"
-                android:onClick="onSecondaryButtonClicked"
+                android:onClick="onRadioButtonChecked"
                 tools:ignore="UsingOnClickInXml" />
         </RadioGroup>
         <RadioGroup
-            android:id="@+id/secondary_color_selector_second_row"
+            android:id="@+id/fourth_row"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_below="@+id/secondary_color_selector_first_row"
+            android:layout_below="@+id/third_row"
             android:gravity="center">
             <RadioButton
-                android:id="@+id/secondary_color_7"
+                android:id="@+id/color_19"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:background="@drawable/color_19_selector"
                 android:layout_margin="4dp"
                 android:button="@android:color/transparent"
-                android:onClick="onSecondaryButtonClicked"
+                android:onClick="onRadioButtonChecked"
                 tools:ignore="UsingOnClickInXml"/>
             <RadioButton
-                android:id="@+id/secondary_color_8"
+                android:id="@+id/color_20"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:background="@drawable/color_20_selector"
                 android:layout_margin="4dp"
                 android:button="@android:color/transparent"
-                android:onClick="onSecondaryButtonClicked"
+                android:onClick="onRadioButtonChecked"
                 tools:ignore="UsingOnClickInXml"/>
             <RadioButton
-                android:id="@+id/secondary_color_9"
+                android:id="@+id/color_21"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:background="@drawable/color_21_selector"
                 android:layout_margin="4dp"
                 android:button="@android:color/transparent"
-                android:onClick="onSecondaryButtonClicked"
+                android:onClick="onRadioButtonChecked"
                 tools:ignore="UsingOnClickInXml"/>
             <RadioButton
-                android:id="@+id/secondary_color_10"
+                android:id="@+id/color_22"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:background="@drawable/color_22_selector"
                 android:layout_margin="4dp"
                 android:button="@android:color/transparent"
-                android:onClick="onSecondaryButtonClicked"
+                android:onClick="onRadioButtonChecked"
                 tools:ignore="UsingOnClickInXml"/>
             <RadioButton
-                android:id="@+id/secondary_color_11"
+                android:id="@+id/color_23"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:background="@drawable/color_23_selector"
                 android:layout_margin="4dp"
                 android:button="@android:color/transparent"
-                android:onClick="onSecondaryButtonClicked"
+                android:onClick="onRadioButtonChecked"
                 tools:ignore="UsingOnClickInXml"/>
             <RadioButton
-                android:id="@+id/secondary_color_12"
+                android:id="@+id/color_24"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:background="@drawable/color_24_selector"
                 android:layout_margin="4dp"
                 android:button="@android:color/transparent"
-                android:onClick="onSecondaryButtonClicked"
+                android:onClick="onRadioButtonChecked"
                 tools:ignore="UsingOnClickInXml"/>
         </RadioGroup>
     </RelativeLayout>
@@ -164,7 +281,7 @@
         android:layout_marginHorizontal="16dp">
 
         <EditText
-            android:id="@+id/input_secondary"
+            android:id="@+id/color_input"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="3"
@@ -179,7 +296,7 @@
             tools:ignore="LabelFor" />
 
         <View
-            android:id="@+id/preview_secondary"
+            android:id="@+id/color_preview"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"/>

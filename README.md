@@ -1,6 +1,6 @@
 <div align='center'>
-	<img src='app/src/main/res/mipmap-xhdpi/ic_launcher.png' alt='crushr icon'>
-    <h1 style='color:#80d8ff;'>crushr</h1>
+	<img src='fastlane/metadata/android/en-US/images/icon.png' alt='crushr icon' width='100' height='100'>
+    <h1 style='color:#ffff9e80;'>crushr</h1>
     <strong>A widget based TODO manager app for android</strong>
 	<p>
 		<img src='https://img.shields.io/badge/Android-3DDC84.svg?style=for-the-badge&logo=android&logoColor=white&style=plastic' alt='OS'>
