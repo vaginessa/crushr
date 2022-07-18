@@ -17,13 +17,10 @@ import androidx.core.content.ContextCompat;
 import java.util.HashSet;
 import java.util.Set;
 
-public class CrushrProvider extends AppWidgetProvider {
+import rasel.neo.crushr.dialogs.NewTaskDialog;
+import rasel.neo.crushr.dialogs.SingleTaskDialog;
 
-    protected static final String SHARED_PREF_TAG = "crushr_shared_pref";
-    protected static final String SHARED_PREF_LIST = "crushr_task_list_";
-    protected static final String SHARED_PREF_PRIMARY_COLOR = "crushr_primary_color_";
-    protected static final String SHARED_PREF_SECONDARY_COLOR = "crushr_secondary_color_";
-    protected static final String EXTRA_WORD = "crushr_word";
+public class CrushrProvider extends AppWidgetProvider {
 
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
@@ -33,40 +30,41 @@ public class CrushrProvider extends AppWidgetProvider {
         super.onUpdate(context, appWidgetManager, appWidgetIds);
     }
 
-    protected static void updateAppWidget(Context context, AppWidgetManager appWidgetManager, int appWidgetId) {
-        RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.crushr_widget);
+    public static void updateAppWidget(Context context, AppWidgetManager appWidgetManager, int appWidgetId) {
+        RemoteViews widgetViews = new RemoteViews(context.getPackageName(), R.layout.crushr_widget);
 
         Intent listIntent = new Intent(context, WidgetService.class);
         listIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
         listIntent.setData(Uri.parse(listIntent.toUri(Intent.URI_INTENT_SCHEME)));
-        views.setRemoteAdapter(R.id.crushr_listview, listIntent);
+        widgetViews.setRemoteAdapter(R.id.crushr_listview, listIntent);
 
         Intent addIntent = new Intent(context, NewTaskDialog.class);
         addIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
         @SuppressLint("UnspecifiedImmutableFlag") PendingIntent addPendingIntent = PendingIntent.getActivity(context, appWidgetId, addIntent, PendingIntent.FLAG_CANCEL_CURRENT);
-        views.setOnClickPendingIntent(R.id.add_crushr_button, addPendingIntent);
+        widgetViews.setOnClickPendingIntent(R.id.add_crushr_button, addPendingIntent);
 
         Intent clickIntent = new Intent(context, SingleTaskDialog.class);
         @SuppressLint("UnspecifiedImmutableFlag") PendingIntent clickPI = PendingIntent.getActivity(context, appWidgetId, clickIntent, PendingIntent.FLAG_CANCEL_CURRENT);
-        views.setPendingIntentTemplate(R.id.crushr_listview, clickPI);
+        widgetViews.setPendingIntentTemplate(R.id.crushr_listview, clickPI);
 
-        SharedPreferences prefs = context.getSharedPreferences(CrushrProvider.SHARED_PREF_TAG, Context.MODE_PRIVATE);
-        Set<String> set = prefs.getStringSet(CrushrProvider.SHARED_PREF_LIST+appWidgetId, new HashSet<>());
+        SharedPreferences prefs = context.getSharedPreferences(Constants.SHARED_PREF_TAG, Context.MODE_PRIVATE);
+        Set<String> set = prefs.getStringSet(Constants.SHARED_PREF_LIST+appWidgetId, new HashSet<>());
         if(set.isEmpty()) {
-            views.setViewVisibility(R.id.empty, View.VISIBLE);
-            views.setViewVisibility(R.id.crushr_listview, View.GONE);
+            widgetViews.setViewVisibility(R.id.empty, View.VISIBLE);
+            widgetViews.setViewVisibility(R.id.crushr_listview, View.GONE);
         } else {
-            views.setViewVisibility(R.id.empty, View.GONE);
-            views.setViewVisibility(R.id.crushr_listview, View.VISIBLE);
+            widgetViews.setViewVisibility(R.id.empty, View.GONE);
+            widgetViews.setViewVisibility(R.id.crushr_listview, View.VISIBLE);
         }
 
-        int primaryColor = prefs.getInt(CrushrProvider.SHARED_PREF_PRIMARY_COLOR + appWidgetId, ContextCompat.getColor(context, R.color.color_22));
-        int secondaryColor = prefs.getInt(CrushrProvider.SHARED_PREF_SECONDARY_COLOR + appWidgetId, ContextCompat.getColor(context, R.color.color_19));
-        views.setInt(R.id.title, "setBackgroundColor", primaryColor);
-        views.setInt(R.id.add_crushr_button_bg, "setColorFilter", secondaryColor);
+        int primaryColor = prefs.getInt(Constants.SHARED_PREF_PRIMARY_COLOR + appWidgetId, ContextCompat.getColor(context, R.color.color_22));
+        int secondaryColor = prefs.getInt(Constants.SHARED_PREF_SECONDARY_COLOR + appWidgetId, ContextCompat.getColor(context, R.color.color_19));
+
+        widgetViews.setInt(R.id.title, "setBackgroundColor", primaryColor);
+        widgetViews.setInt(R.id.add_crushr_button_bg, "setColorFilter", secondaryColor);
 
         appWidgetManager.notifyAppWidgetViewDataChanged(appWidgetId, R.id.crushr_listview);
-        appWidgetManager.updateAppWidget(appWidgetId, views);
+        appWidgetManager.updateAppWidget(appWidgetId, widgetViews);
     }
 
     @Override

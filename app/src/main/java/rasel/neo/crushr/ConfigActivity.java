@@ -11,6 +11,11 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import rasel.neo.crushr.dialogs.PrimaryColorDialog;
+import rasel.neo.crushr.dialogs.SecondaryColorDialog;
+import rasel.neo.crushr.dialogs.TextColorDialog;
+import rasel.neo.crushr.utils.BaseUtils;
+
 public class ConfigActivity extends AppCompatActivity {
 
     private int appWidgetId;
@@ -44,9 +49,16 @@ public class ConfigActivity extends AppCompatActivity {
             startActivity(secondaryIntent);
         });
 
+        findViewById(R.id.text_color_dialog).setOnClickListener(v -> {
+            Intent textColorIntent = new Intent(getApplicationContext(), TextColorDialog.class);
+            textColorIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
+            startActivity(textColorIntent);
+        });
+
         findViewById(R.id.btn_reset).setOnClickListener(v -> {
             BaseUtils.setPrimaryColor(getApplicationContext(), ContextCompat.getColor(getApplicationContext(), R.color.color_22), appWidgetId);
             BaseUtils.setSecondaryColor(getApplicationContext(), ContextCompat.getColor(getApplicationContext(), R.color.color_19), appWidgetId);
+            BaseUtils.setTextColor(getApplicationContext(), ContextCompat.getColor(getApplicationContext(), R.color.color_6), appWidgetId);
             loadPreviews();
         });
 
@@ -62,9 +74,10 @@ public class ConfigActivity extends AppCompatActivity {
     }
 
     private void loadPreviews() {
-        SharedPreferences prefs = getApplicationContext().getSharedPreferences(CrushrProvider.SHARED_PREF_TAG, Context.MODE_PRIVATE);
-        int primaryColor = prefs.getInt(CrushrProvider.SHARED_PREF_PRIMARY_COLOR + appWidgetId, ContextCompat.getColor(getApplicationContext(), R.color.color_22));
-        int secondaryColor = prefs.getInt(CrushrProvider.SHARED_PREF_SECONDARY_COLOR + appWidgetId, ContextCompat.getColor(getApplicationContext(), R.color.color_19));
+        SharedPreferences prefs = getApplicationContext().getSharedPreferences(Constants.SHARED_PREF_TAG, Context.MODE_PRIVATE);
+        int primaryColor = prefs.getInt(Constants.SHARED_PREF_PRIMARY_COLOR + appWidgetId, ContextCompat.getColor(getApplicationContext(), R.color.color_22));
+        int secondaryColor = prefs.getInt(Constants.SHARED_PREF_SECONDARY_COLOR + appWidgetId, ContextCompat.getColor(getApplicationContext(), R.color.color_19));
+        int textColor = prefs.getInt(Constants.SHARED_PREF_TEXT_COLOR + appWidgetId, ContextCompat.getColor(getApplicationContext(), R.color.color_6));
 
         GradientDrawable borderPrimary = new GradientDrawable();
         borderPrimary.setShape(GradientDrawable.OVAL);
@@ -77,6 +90,12 @@ public class ConfigActivity extends AppCompatActivity {
         borderSecondary.setColor(secondaryColor);
         borderSecondary.setStroke(1, 0xFF111111);
         (findViewById(R.id.secondary_color_preview)).setBackground(borderSecondary);
+
+        GradientDrawable borderTextColor = new GradientDrawable();
+        borderTextColor.setShape(GradientDrawable.OVAL);
+        borderTextColor.setColor(textColor);
+        borderTextColor.setStroke(1, 0xFF111111);
+        (findViewById(R.id.text_color_preview)).setBackground(borderTextColor);
     }
 
     protected void onResume() {

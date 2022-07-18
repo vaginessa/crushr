@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.widget.RemoteViews;
 import android.widget.RemoteViewsService;
 
+import androidx.core.content.ContextCompat;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -32,8 +34,8 @@ public class RemoteViewFactory implements RemoteViewsService.RemoteViewsFactory 
     @Override
     public void onDataSetChanged() {
         itemList.clear();
-        SharedPreferences prefs = context.getSharedPreferences(CrushrProvider.SHARED_PREF_TAG, Context.MODE_PRIVATE);
-        Set<String> set = prefs.getStringSet(CrushrProvider.SHARED_PREF_LIST + appWidgetId, new HashSet<>());
+        SharedPreferences prefs = context.getSharedPreferences(Constants.SHARED_PREF_TAG, Context.MODE_PRIVATE);
+        Set<String> set = prefs.getStringSet(Constants.SHARED_PREF_LIST + appWidgetId, new HashSet<>());
 
         Object[] list = set.toArray();
         for(Object item : list) {
@@ -56,9 +58,13 @@ public class RemoteViewFactory implements RemoteViewsService.RemoteViewsFactory 
         RemoteViews remoteView = new RemoteViews(context.getPackageName(), R.layout.crushr_item);
         remoteView.setTextViewText(R.id.todo, itemList.get(position));
 
+        SharedPreferences prefs = context.getSharedPreferences(Constants.SHARED_PREF_TAG, Context.MODE_PRIVATE);
+        int textColor = prefs.getInt(Constants.SHARED_PREF_TEXT_COLOR + appWidgetId, ContextCompat.getColor(context, R.color.color_6));
+        remoteView.setInt(R.id.todo, "setTextColor", textColor);
+
         Intent i = new Intent();
         Bundle extras = new Bundle();
-        extras.putString(CrushrProvider.EXTRA_WORD, itemList.get(position));
+        extras.putString(Constants.EXTRA_WORD, itemList.get(position));
         extras.putInt(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
         i.putExtras(extras);
         remoteView.setOnClickFillInIntent(R.id.container, i);

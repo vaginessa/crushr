@@ -1,4 +1,4 @@
-package rasel.neo.crushr;
+package rasel.neo.crushr.utils;
 
 import android.annotation.SuppressLint;
 import android.appwidget.AppWidgetManager;
@@ -12,12 +12,14 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import java.util.Arrays;
+
+import rasel.neo.crushr.Constants;
+import rasel.neo.crushr.R;
 
 public class ColorUtils {
 
@@ -31,7 +33,7 @@ public class ColorUtils {
             color13, color14, color15, color16, color17, color18, color19, color20, color21, color22, color23, color24;
 
     @SuppressLint("ResourceType")
-    protected void colorDialogInit(AppCompatActivity appCompatActivity, Intent intent, Context context) {
+    public void colorDialogInit(AppCompatActivity appCompatActivity, Intent intent, Context context) {
 
         int width = (int) (appCompatActivity.getResources().getDisplayMetrics().widthPixels * 0.80);
         int height = (int) (appCompatActivity.getResources().getDisplayMetrics().heightPixels * 0.50);
@@ -69,12 +71,14 @@ public class ColorUtils {
         color23 = appCompatActivity.getString(R.color.color_23);
         color24 = appCompatActivity.getString(R.color.color_24);
 
-        SharedPreferences prefs = context.getSharedPreferences(CrushrProvider.SHARED_PREF_TAG, Context.MODE_PRIVATE);
+        SharedPreferences prefs = context.getSharedPreferences(Constants.SHARED_PREF_TAG, Context.MODE_PRIVATE);
 
-        if(appCompatActivity.getClass().getName().equals("rasel.neo.crushr.PrimaryColorDialog")) {
-            color = prefs.getInt(CrushrProvider.SHARED_PREF_PRIMARY_COLOR + appWidgetId, ContextCompat.getColor(context, R.color.color_22));
-        } else if(appCompatActivity.getClass().getName().equals("rasel.neo.crushr.SecondaryColorDialog")) {
-            color = prefs.getInt(CrushrProvider.SHARED_PREF_SECONDARY_COLOR + appWidgetId, ContextCompat.getColor(context, R.color.color_19));
+        if(appCompatActivity.getClass().getName().equals("rasel.neo.crushr.dialogs.PrimaryColorDialog")) {
+            color = prefs.getInt(Constants.SHARED_PREF_PRIMARY_COLOR + appWidgetId, ContextCompat.getColor(context, R.color.color_22));
+        } else if(appCompatActivity.getClass().getName().equals("rasel.neo.crushr.dialogs.SecondaryColorDialog")) {
+            color = prefs.getInt(Constants.SHARED_PREF_SECONDARY_COLOR + appWidgetId, ContextCompat.getColor(context, R.color.color_19));
+        } else if(appCompatActivity.getClass().getName().equals("rasel.neo.crushr.dialogs.TextColorDialog")) {
+            color = prefs.getInt(Constants.SHARED_PREF_TEXT_COLOR + appWidgetId, ContextCompat.getColor(context, R.color.color_6));
         }
 
         loadPreview(appCompatActivity, context, color);
@@ -141,25 +145,8 @@ public class ColorUtils {
             public void afterTextChanged(Editable s) {}
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                String colorStr = colorInputBox.getText().toString().trim();
                 View colorPreview = appCompatActivity.findViewById(R.id.color_preview);
-                try{
-                    if(colorStr.length() < 2) {
-                        colorPreview.setBackgroundColor(ContextCompat.getColor(context, android.R.color.transparent));
-                    } else if((colorStr.length() == 7) || (colorStr.length() == 9)) {
-                        colorPreview.setBackgroundColor(Color.parseColor(colorStr));
-                    } else if(colorStr.equalsIgnoreCase("#fff")) {
-                        colorPreview.setBackgroundColor(Color.parseColor(colorStr + "fff"));
-                    } else if(colorStr.equalsIgnoreCase("#000")) {
-                        colorPreview.setBackgroundColor(Color.parseColor(colorStr + "000"));
-                    } else if((2 <= colorStr.length() && colorStr.length() < 7)) {
-                        colorPreview.setBackgroundColor(Color.parseColor(String.format("%1$-" + 7 + "s", colorStr).replace(' ', '0')));
-                    } else if(colorStr.length() == 8) {
-                        colorPreview.setBackgroundColor(Color.parseColor(colorStr.substring(0, 7)));
-                    } else if(colorStr.length() > 9) {
-                        colorPreview.setBackgroundColor(Color.parseColor(colorStr.substring(0, 9)));
-                    }
-                } catch(NumberFormatException ignored) {}
+                colorPreview.setBackgroundColor(extractColors(context));
             }
         });
     }
@@ -168,46 +155,38 @@ public class ColorUtils {
         appCompatActivity.findViewById(R.id.input_cancel).setOnClickListener(v -> appCompatActivity.finish());
 
         appCompatActivity.findViewById(R.id.input_ok).setOnClickListener(v -> {
-            String colorStr = colorInputBox.getText().toString().trim();
-            if(appCompatActivity.getClass().getName().equals("rasel.neo.crushr.PrimaryColorDialog")) {
-                try{
-                    if(colorStr.length() < 2) {
-                        Toast.makeText(context, appCompatActivity.getString(R.string.no_change_toast), Toast.LENGTH_SHORT).show();
-                    } else if((colorStr.length() == 7) || (colorStr.length() == 9)) {
-                        BaseUtils.setPrimaryColor(context, Color.parseColor(colorStr), appWidgetId);
-                    } else if(colorStr.equalsIgnoreCase("#fff")) {
-                        BaseUtils.setPrimaryColor(context, Color.parseColor(colorStr + "fff"), appWidgetId);
-                    } else if(colorStr.equalsIgnoreCase("#000")) {
-                        BaseUtils.setPrimaryColor(context, Color.parseColor(colorStr + "000"), appWidgetId);
-                    } else if((2 <= colorStr.length() && colorStr.length() < 7)) {
-                        BaseUtils.setPrimaryColor(context, Color.parseColor(String.format("%1$-" + 7 + "s", colorStr).replace(' ', '0')), appWidgetId);
-                    } else if(colorStr.length() == 8) {
-                        BaseUtils.setPrimaryColor(context, Color.parseColor(colorStr.substring(0, 7)), appWidgetId);
-                    } else if(colorStr.length() > 9) {
-                        BaseUtils.setPrimaryColor(context, Color.parseColor(colorStr.substring(0, 9)), appWidgetId);
-                    }
-                } catch(NumberFormatException ignored) {}
-            } else if(appCompatActivity.getClass().getName().equals("rasel.neo.crushr.SecondaryColorDialog")) {
-                try{
-                    if(colorStr.length() < 2) {
-                        Toast.makeText(context, appCompatActivity.getString(R.string.no_change_toast), Toast.LENGTH_SHORT).show();
-                    } else if((colorStr.length() == 7) || (colorStr.length() == 9)) {
-                        BaseUtils.setSecondaryColor(context, Color.parseColor(colorStr), appWidgetId);
-                    } else if(colorStr.equalsIgnoreCase("#fff")) {
-                        BaseUtils.setSecondaryColor(context, Color.parseColor(colorStr + "fff"), appWidgetId);
-                    } else if(colorStr.equalsIgnoreCase("#000")) {
-                        BaseUtils.setSecondaryColor(context, Color.parseColor(colorStr + "000"), appWidgetId);
-                    } else if((2 <= colorStr.length() && colorStr.length() < 7)) {
-                        BaseUtils.setSecondaryColor(context, Color.parseColor(String.format("%1$-" + 7 + "s", colorStr).replace(' ', '0')), appWidgetId);
-                    } else if(colorStr.length() == 8) {
-                        BaseUtils.setSecondaryColor(context, Color.parseColor(colorStr.substring(0, 7)), appWidgetId);
-                    } else if(colorStr.length() > 9) {
-                        BaseUtils.setSecondaryColor(context, Color.parseColor(colorStr.substring(0, 9)), appWidgetId);
-                    }
-                } catch(NumberFormatException ignored) {}
+            if(appCompatActivity.getClass().getName().equals("rasel.neo.crushr.dialogs.PrimaryColorDialog")) {
+                BaseUtils.setPrimaryColor(context, extractColors(context), appWidgetId);
+            } else if(appCompatActivity.getClass().getName().equals("rasel.neo.crushr.dialogs.SecondaryColorDialog")) {
+                BaseUtils.setSecondaryColor(context, extractColors(context), appWidgetId);
+            } else if(appCompatActivity.getClass().getName().equals("rasel.neo.crushr.dialogs.TextColorDialog")) {
+                BaseUtils.setTextColor(context, extractColors(context), appWidgetId);
             }
             appCompatActivity.finish();
         });
+    }
+
+    private int extractColors(Context context) {
+        String colorStr = colorInputBox.getText().toString().trim();
+        int extractedColor = 0;
+        try{
+            if(colorStr.length() < 2) {
+                extractedColor = ContextCompat.getColor(context, android.R.color.transparent);
+            } else if((colorStr.length() == 7) || (colorStr.length() == 9)) {
+                extractedColor = Color.parseColor(colorStr);
+            } else if(colorStr.equalsIgnoreCase("#fff")) {
+                extractedColor = Color.parseColor(colorStr + "fff");
+            } else if(colorStr.equalsIgnoreCase("#000")) {
+                extractedColor = Color.parseColor(colorStr + "000");
+            } else if((2 <= colorStr.length() && colorStr.length() < 7)) {
+                extractedColor = Color.parseColor(String.format("%1$-" + 7 + "s", colorStr).replace(' ', '0'));
+            } else if(colorStr.length() == 8) {
+                extractedColor = Color.parseColor(colorStr.substring(0, 7));
+            } else if(colorStr.length() > 9) {
+                extractedColor = Color.parseColor(colorStr.substring(0, 9));
+            }
+        } catch(NumberFormatException ignored) {}
+        return extractedColor;
     }
 
     private void loadColorSelections(AppCompatActivity appCompatActivity, Context context, int color) {
@@ -263,7 +242,7 @@ public class ColorUtils {
     }
 
     @SuppressLint({"NonConstantResourceId", "ResourceType"})
-    protected void onColorButtonClicked(View view, AppCompatActivity appCompatActivity, Context context) {
+    public void onColorButtonClicked(View view, AppCompatActivity appCompatActivity, Context context) {
         View colorPreview = appCompatActivity.findViewById(R.id.color_preview);
         switch(view.getId()) {
             case R.id.color_1:

@@ -1,4 +1,4 @@
-package rasel.neo.crushr;
+package rasel.neo.crushr.dialogs;
 
 import android.os.Bundle;
 import android.view.View;
@@ -7,7 +7,10 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class SecondaryColorDialog extends AppCompatActivity {
+import rasel.neo.crushr.R;
+import rasel.neo.crushr.utils.ColorUtils;
+
+public class TextColorDialog extends AppCompatActivity {
 
     private final ColorUtils colorUtils = new ColorUtils();
 
@@ -17,7 +20,7 @@ public class SecondaryColorDialog extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
 
         setContentView(R.layout.color_dialog);
-        ((TextView) findViewById(R.id.color_dialog_title)).setText(R.string.secondary_color);
+        ((TextView) findViewById(R.id.color_dialog_title)).setText(R.string.text_color);
 
         colorUtils.colorDialogInit(this, getIntent(), getApplicationContext());
     }

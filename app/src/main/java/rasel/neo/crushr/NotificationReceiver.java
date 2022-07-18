@@ -14,12 +14,16 @@ import android.os.Build;
 
 import androidx.core.app.NotificationCompat;
 
+import rasel.neo.crushr.dialogs.NewTaskDialog;
+import rasel.neo.crushr.dialogs.SingleTaskDialog;
+import rasel.neo.crushr.utils.BaseUtils;
+import rasel.neo.crushr.utils.ExtraUtils;
+
 public class NotificationReceiver extends BroadcastReceiver {
 
     private static NotificationManager notifyManager;
-    protected static final int NOTIFY_ID = 0;
 
-    protected static void createNotification(Context ctx, String text, int appWidgetId) {
+    public static void createNotification(Context ctx, String text, int appWidgetId) {
 
         Intent openIntent = new Intent(ctx, SingleTaskDialog.class);
         openIntent.putExtra("rasel.neo.crushr.OPEN", true);
@@ -78,7 +82,7 @@ public class NotificationReceiver extends BroadcastReceiver {
                 .addAction(R.drawable.icon_unpin, ctx.getString(R.string.unpin), unpinPending);
 
         Notification notification = builder.build();
-        notifyManager.notify(NOTIFY_ID, notification);
+        notifyManager.notify(Constants.NOTIFY_ID, notification);
     }
 
     @SuppressLint("UnsafeProtectedBroadcastReceiver")
@@ -86,7 +90,7 @@ public class NotificationReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         if(intent.hasExtra("rasel.neo.crushr.UNPIN")) {
             NotificationManager notificationManager = (NotificationManager) context.getSystemService(NOTIFICATION_SERVICE);
-            notificationManager.cancel(NotificationReceiver.NOTIFY_ID);
+            notificationManager.cancel(Constants.NOTIFY_ID);
         } else if(intent.hasExtra("rasel.neo.crushr.REMOVE")) {
             String text = intent.getExtras().getString("text");
             int id = intent.getExtras().getInt("id");

@@ -1,4 +1,4 @@
-package rasel.neo.crushr;
+package rasel.neo.crushr.dialogs;
 
 import android.appwidget.AppWidgetManager;
 import android.content.ClipData;
@@ -12,6 +12,12 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import rasel.neo.crushr.Constants;
+import rasel.neo.crushr.NotificationReceiver;
+import rasel.neo.crushr.R;
+import rasel.neo.crushr.utils.BaseUtils;
+import rasel.neo.crushr.utils.ExtraUtils;
 
 public class SingleTaskDialog extends AppCompatActivity {
 
@@ -32,7 +38,7 @@ public class SingleTaskDialog extends AppCompatActivity {
             task = getIntent().getExtras().getString("text");
             appWidgetId = getIntent().getExtras().getInt("id");
         } else {
-            task = getIntent().getExtras().getString(CrushrProvider.EXTRA_WORD);
+            task = getIntent().getExtras().getString(Constants.EXTRA_WORD);
             appWidgetId = getIntent().getExtras().getInt(AppWidgetManager.EXTRA_APPWIDGET_ID);
         }
 

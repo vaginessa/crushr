@@ -16,25 +16,31 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="rasel.neo.crushr.NewTaskDialog"
+        <activity android:name="rasel.neo.crushr.dialogs.NewTaskDialog"
             android:launchMode="singleInstance"
             android:theme="@style/ThemeDialogCustom"
             android:excludeFromRecents="true">
         </activity>
 
-        <activity android:name="rasel.neo.crushr.SingleTaskDialog"
+        <activity android:name="rasel.neo.crushr.dialogs.SingleTaskDialog"
             android:launchMode="singleInstance"
             android:theme="@style/ThemeDialogCustom"
             android:excludeFromRecents="true">
         </activity>
 
-        <activity android:name="rasel.neo.crushr.PrimaryColorDialog"
+        <activity android:name="rasel.neo.crushr.dialogs.PrimaryColorDialog"
             android:launchMode="singleInstance"
             android:theme="@style/ThemeDialogCustom"
             android:excludeFromRecents="true">
         </activity>
 
-        <activity android:name="rasel.neo.crushr.SecondaryColorDialog"
+        <activity android:name="rasel.neo.crushr.dialogs.SecondaryColorDialog"
+            android:launchMode="singleInstance"
+            android:theme="@style/ThemeDialogCustom"
+            android:excludeFromRecents="true">
+        </activity>
+
+        <activity android:name="rasel.neo.crushr.dialogs.TextColorDialog"
             android:launchMode="singleInstance"
             android:theme="@style/ThemeDialogCustom"
             android:excludeFromRecents="true">

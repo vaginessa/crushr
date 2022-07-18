@@ -1,4 +1,4 @@
-package rasel.neo.crushr;
+package rasel.neo.crushr.dialogs;
 
 import android.appwidget.AppWidgetManager;
 import android.content.Intent;
@@ -19,6 +19,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
+
+import rasel.neo.crushr.ConfigActivity;
+import rasel.neo.crushr.Constants;
+import rasel.neo.crushr.R;
+import rasel.neo.crushr.utils.BaseUtils;
+import rasel.neo.crushr.utils.ExtraUtils;
 
 @SuppressWarnings("MismatchedQueryAndUpdateOfCollection")
 public class NewTaskDialog extends AppCompatActivity {
@@ -56,8 +62,8 @@ public class NewTaskDialog extends AppCompatActivity {
             return true;
         });
 
-        SharedPreferences prefs = getSharedPreferences(CrushrProvider.SHARED_PREF_TAG, MODE_PRIVATE);
-        Set<String> set = prefs.getStringSet(CrushrProvider.SHARED_PREF_LIST+appWidgetId, new HashSet<>());
+        SharedPreferences prefs = getSharedPreferences(Constants.SHARED_PREF_TAG, MODE_PRIVATE);
+        Set<String> set = prefs.getStringSet(Constants.SHARED_PREF_LIST+appWidgetId, new HashSet<>());
         for(String item : set) {
             addItem(item);
         }

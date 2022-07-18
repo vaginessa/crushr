@@ -22,7 +22,7 @@
   - [x] Quick tweet
 - [x] Pin task to notification area
   - [x] Control task from notification panel
-- [x] Change primary and secondary color
+- [x] Change colors of different parts
   - [x] Built-in material colors to select from
   - [x] Custom color input
 - [x] Reset configurations
@@ -59,7 +59,6 @@ There's another option to get this app- fork and build it. This project is very 
 - Features:
   - Show or hide the 'crushr' header
   - Widget's background color changing option
-  - Task text's color changing option
   - Task text's size changing option
   - Task text's style changing option
   - Task text's font face changing option

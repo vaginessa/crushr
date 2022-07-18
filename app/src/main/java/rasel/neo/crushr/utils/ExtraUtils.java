@@ -1,4 +1,4 @@
-package rasel.neo.crushr;
+package rasel.neo.crushr.utils;
 
 import static android.content.Context.NOTIFICATION_SERVICE;
 
@@ -10,6 +10,10 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.service.notification.StatusBarNotification;
+
+import rasel.neo.crushr.Constants;
+import rasel.neo.crushr.CrushrProvider;
+import rasel.neo.crushr.R;
 
 public class ExtraUtils {
 
@@ -31,18 +35,18 @@ public class ExtraUtils {
     }
 
     // checks if notification exists or not
-    protected static boolean notificationExist(Context ctx) {
+    public static boolean notificationExist(Context ctx) {
         NotificationManager notificationManager = (NotificationManager) ctx.getSystemService(NOTIFICATION_SERVICE);
         StatusBarNotification[] notifications = notificationManager.getActiveNotifications();
         for (StatusBarNotification notification : notifications) {
-            if(notification.getId() == NotificationReceiver.NOTIFY_ID) {
+            if(notification.getId() == Constants.NOTIFY_ID) {
                 return true;
             }
         } return false;
     }
 
     // checks if a specific package exists or not
-    protected static boolean packageExist(Context ctx, String packageName) {
+    public static boolean packageExist(Context ctx, String packageName) {
         try {
             ApplicationInfo info = ctx.getPackageManager().getApplicationInfo(
                     packageName, PackageManager.GET_UNINSTALLED_PACKAGES);
@@ -53,7 +57,7 @@ public class ExtraUtils {
     }
 
     // reloads the main listview
-    protected static void refreshListView(Context ctx, int id) {
+    public static void refreshListView(Context ctx, int id) {
         AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(ctx);
         int[] appWidgetIds = appWidgetManager.getAppWidgetIds(new ComponentName(ctx, CrushrProvider.class));
         appWidgetManager.notifyAppWidgetViewDataChanged(appWidgetIds, R.id.crushr_listview);
