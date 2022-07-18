@@ -7,8 +7,8 @@ android {
         applicationId "rasel.neo.crushr"
         minSdkVersion 23
         targetSdkVersion 32
-        versionCode 5
-        versionName "14072022"
+        versionCode 6
+        versionName "18.07.2022"
     }
 
     buildTypes {

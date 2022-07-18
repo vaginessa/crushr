@@ -1,0 +1,4 @@
+Three more option to customize the look:
+- Change widget's background color
+- Change task's text color
+- Change task's background color
