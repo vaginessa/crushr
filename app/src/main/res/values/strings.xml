@@ -2,6 +2,7 @@
     <string name="add">Add</string>
     <string name="app_name">crushr</string>
     <string name="apply_configs">Apply new configs</string>
+    <string name="bg_color">Background Color</string>
     <string name="color_hint">e.g. #AARRGGBB or #RRGGBB</string>
     <string name="configs_title">Configurations</string>
     <string name="edit">Edit</string>
@@ -21,4 +22,5 @@
     <string name="twitter_url">https://twitter.com/intent/tweet?text=</string>
     <string name="type_here_hint">type here…</string>
     <string name="unpin">Unpin</string>
+    <string name="widget_bg_color">Widget\'s Background Color</string>
 </resources>

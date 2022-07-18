@@ -40,7 +40,19 @@
             android:excludeFromRecents="true">
         </activity>
 
+        <activity android:name="rasel.neo.crushr.dialogs.WidgetBGColorDialog"
+            android:launchMode="singleInstance"
+            android:theme="@style/ThemeDialogCustom"
+            android:excludeFromRecents="true">
+        </activity>
+
         <activity android:name="rasel.neo.crushr.dialogs.TextColorDialog"
+            android:launchMode="singleInstance"
+            android:theme="@style/ThemeDialogCustom"
+            android:excludeFromRecents="true">
+        </activity>
+
+        <activity android:name="rasel.neo.crushr.dialogs.BGColorDialog"
             android:launchMode="singleInstance"
             android:theme="@style/ThemeDialogCustom"
             android:excludeFromRecents="true">

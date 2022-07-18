@@ -58,7 +58,6 @@ There's another option to get this app- fork and build it. This project is very 
   - Bugs, those are playing with me
 - Features:
   - Show or hide the 'crushr' header
-  - Widget's background color changing option
   - Task text's size changing option
   - Task text's style changing option
   - Task text's font face changing option

@@ -59,9 +59,11 @@ public class CrushrProvider extends AppWidgetProvider {
 
         int primaryColor = prefs.getInt(Constants.SHARED_PREF_PRIMARY_COLOR + appWidgetId, ContextCompat.getColor(context, R.color.color_22));
         int secondaryColor = prefs.getInt(Constants.SHARED_PREF_SECONDARY_COLOR + appWidgetId, ContextCompat.getColor(context, R.color.color_19));
+        int widgetBGColor = prefs.getInt(Constants.SHARED_PREF_WIDGETBG_COLOR + appWidgetId, ContextCompat.getColor(context, android.R.color.transparent));
 
         widgetViews.setInt(R.id.title, "setBackgroundColor", primaryColor);
         widgetViews.setInt(R.id.add_crushr_button_bg, "setColorFilter", secondaryColor);
+        widgetViews.setInt(R.id.widget, "setBackgroundColor", widgetBGColor);
 
         appWidgetManager.notifyAppWidgetViewDataChanged(appWidgetId, R.id.crushr_listview);
         appWidgetManager.updateAppWidget(appWidgetId, widgetViews);

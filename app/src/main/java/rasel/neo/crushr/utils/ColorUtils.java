@@ -77,8 +77,12 @@ public class ColorUtils {
             color = prefs.getInt(Constants.SHARED_PREF_PRIMARY_COLOR + appWidgetId, ContextCompat.getColor(context, R.color.color_22));
         } else if(appCompatActivity.getClass().getName().equals("rasel.neo.crushr.dialogs.SecondaryColorDialog")) {
             color = prefs.getInt(Constants.SHARED_PREF_SECONDARY_COLOR + appWidgetId, ContextCompat.getColor(context, R.color.color_19));
+        } else if(appCompatActivity.getClass().getName().equals("rasel.neo.crushr.dialogs.WidgetBGColorDialog")) {
+            color = prefs.getInt(Constants.SHARED_PREF_WIDGETBG_COLOR + appWidgetId, ContextCompat.getColor(context, android.R.color.transparent));
         } else if(appCompatActivity.getClass().getName().equals("rasel.neo.crushr.dialogs.TextColorDialog")) {
             color = prefs.getInt(Constants.SHARED_PREF_TEXT_COLOR + appWidgetId, ContextCompat.getColor(context, R.color.color_6));
+        } else if(appCompatActivity.getClass().getName().equals("rasel.neo.crushr.dialogs.BGColorDialog")) {
+            color = prefs.getInt(Constants.SHARED_PREF_BG_COLOR + appWidgetId, ContextCompat.getColor(context, R.color.color_20));
         }
 
         loadPreview(appCompatActivity, context, color);
@@ -159,8 +163,12 @@ public class ColorUtils {
                 BaseUtils.setPrimaryColor(context, extractColors(context), appWidgetId);
             } else if(appCompatActivity.getClass().getName().equals("rasel.neo.crushr.dialogs.SecondaryColorDialog")) {
                 BaseUtils.setSecondaryColor(context, extractColors(context), appWidgetId);
+            } else if(appCompatActivity.getClass().getName().equals("rasel.neo.crushr.dialogs.WidgetBGColorDialog")) {
+                BaseUtils.setWidgetBGColor(context, extractColors(context), appWidgetId);
             } else if(appCompatActivity.getClass().getName().equals("rasel.neo.crushr.dialogs.TextColorDialog")) {
                 BaseUtils.setTextColor(context, extractColors(context), appWidgetId);
+            } else if(appCompatActivity.getClass().getName().equals("rasel.neo.crushr.dialogs.BGColorDialog")) {
+                BaseUtils.setBGColor(context, extractColors(context), appWidgetId);
             }
             appCompatActivity.finish();
         });

@@ -55,10 +55,24 @@ public class BaseUtils {
         editor.apply();
     }
 
+    public static void setWidgetBGColor(Context ctx, int color, int id) {
+        SharedPreferences prefs = ctx.getSharedPreferences(Constants.SHARED_PREF_TAG, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putInt(Constants.SHARED_PREF_WIDGETBG_COLOR + id, color);
+        editor.apply();
+    }
+
     public static void setTextColor(Context ctx, int color, int id) {
         SharedPreferences prefs = ctx.getSharedPreferences(Constants.SHARED_PREF_TAG, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
         editor.putInt(Constants.SHARED_PREF_TEXT_COLOR + id, color);
+        editor.apply();
+    }
+
+    public static void setBGColor(Context ctx, int color, int id) {
+        SharedPreferences prefs = ctx.getSharedPreferences(Constants.SHARED_PREF_TAG, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putInt(Constants.SHARED_PREF_BG_COLOR + id, color);
         editor.apply();
     }
 }

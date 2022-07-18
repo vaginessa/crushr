@@ -55,21 +55,25 @@ public class RemoteViewFactory implements RemoteViewsService.RemoteViewsFactory 
 
     @Override
     public RemoteViews getViewAt(int position) {
-        RemoteViews remoteView = new RemoteViews(context.getPackageName(), R.layout.crushr_item);
-        remoteView.setTextViewText(R.id.todo, itemList.get(position));
+        RemoteViews itemViews = new RemoteViews(context.getPackageName(), R.layout.crushr_item);
+        itemViews.setTextViewText(R.id.todo, itemList.get(position));
 
         SharedPreferences prefs = context.getSharedPreferences(Constants.SHARED_PREF_TAG, Context.MODE_PRIVATE);
         int textColor = prefs.getInt(Constants.SHARED_PREF_TEXT_COLOR + appWidgetId, ContextCompat.getColor(context, R.color.color_6));
-        remoteView.setInt(R.id.todo, "setTextColor", textColor);
+        int BGColor = prefs.getInt(Constants.SHARED_PREF_BG_COLOR + appWidgetId, ContextCompat.getColor(context, R.color.color_20));
+
+        itemViews.setInt(R.id.todo, "setTextColor", textColor);
+        itemViews.setInt(R.id.bullet, "setColorFilter", textColor);
+        itemViews.setInt(R.id.container, "setBackgroundColor", BGColor);
 
         Intent i = new Intent();
         Bundle extras = new Bundle();
         extras.putString(Constants.EXTRA_WORD, itemList.get(position));
         extras.putInt(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
         i.putExtras(extras);
-        remoteView.setOnClickFillInIntent(R.id.container, i);
+        itemViews.setOnClickFillInIntent(R.id.container, i);
 
-        return remoteView;
+        return itemViews;
     }
 
     @Override

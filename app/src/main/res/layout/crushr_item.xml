@@ -4,11 +4,12 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:background="@drawable/btn_item"
     android:padding="16dp"
-    android:id="@+id/container">
+    android:id="@+id/container"
+    tools:ignore="UseCompoundDrawables">
 
     <ImageView
+        android:id="@+id/bullet"
         android:layout_width="3dp"
         android:layout_height="3dp"
         android:src="@drawable/icon_bullet"
