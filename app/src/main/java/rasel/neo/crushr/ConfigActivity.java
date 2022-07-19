@@ -7,11 +7,13 @@ import android.content.SharedPreferences;
 import android.graphics.drawable.GradientDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import rasel.neo.crushr.dialogs.BGColorDialog;
+import rasel.neo.crushr.dialogs.FontSizeDialog;
 import rasel.neo.crushr.dialogs.PrimaryColorDialog;
 import rasel.neo.crushr.dialogs.SecondaryColorDialog;
 import rasel.neo.crushr.dialogs.TextColorDialog;
@@ -69,12 +71,20 @@ public class ConfigActivity extends AppCompatActivity {
             startActivity(secondaryIntent);
         });
 
+        findViewById(R.id.font_size_dialog).setOnClickListener(v -> {
+            Intent secondaryIntent = new Intent(getApplicationContext(), FontSizeDialog.class);
+            secondaryIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
+            startActivity(secondaryIntent);
+        });
+
         findViewById(R.id.btn_reset).setOnClickListener(v -> {
             BaseUtils.setPrimaryColor(getApplicationContext(), ContextCompat.getColor(getApplicationContext(), R.color.color_22), appWidgetId);
             BaseUtils.setSecondaryColor(getApplicationContext(), ContextCompat.getColor(getApplicationContext(), R.color.color_19), appWidgetId);
             BaseUtils.setWidgetBGColor(getApplicationContext(), ContextCompat.getColor(getApplicationContext(), android.R.color.transparent), appWidgetId);
             BaseUtils.setTextColor(getApplicationContext(), ContextCompat.getColor(getApplicationContext(), R.color.color_6), appWidgetId);
             BaseUtils.setBGColor(getApplicationContext(), ContextCompat.getColor(getApplicationContext(), R.color.color_20), appWidgetId);
+
+            BaseUtils.setFontSize(getApplicationContext(), 14, appWidgetId);
             loadPreviews();
         });
 
@@ -96,6 +106,7 @@ public class ConfigActivity extends AppCompatActivity {
         int widgetBGColor = prefs.getInt(Constants.SHARED_PREF_WIDGETBG_COLOR + appWidgetId, ContextCompat.getColor(getApplicationContext(), android.R.color.transparent));
         int textColor = prefs.getInt(Constants.SHARED_PREF_TEXT_COLOR + appWidgetId, ContextCompat.getColor(getApplicationContext(), R.color.color_6));
         int BGColor = prefs.getInt(Constants.SHARED_PREF_BG_COLOR + appWidgetId, ContextCompat.getColor(getApplicationContext(), R.color.color_20));
+        float fontSize = prefs.getFloat(Constants.SHARED_PREF_FONT_SIZE + (float) appWidgetId, 14);
 
         GradientDrawable borderPrimary = new GradientDrawable();
         borderPrimary.setShape(GradientDrawable.OVAL);
@@ -126,6 +137,8 @@ public class ConfigActivity extends AppCompatActivity {
         borderBG.setColor(BGColor);
         borderBG.setStroke(1, 0xFF111111);
         (findViewById(R.id.bg_color_preview)).setBackground(borderBG);
+
+        ((TextView) findViewById(R.id.font_size_preview)).setText(String.valueOf(fontSize));
     }
 
     protected void onResume() {

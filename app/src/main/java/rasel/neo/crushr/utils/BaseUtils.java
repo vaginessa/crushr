@@ -75,4 +75,11 @@ public class BaseUtils {
         editor.putInt(Constants.SHARED_PREF_BG_COLOR + id, color);
         editor.apply();
     }
+
+    public static void setFontSize(Context ctx, float size, float id) {
+        SharedPreferences prefs = ctx.getSharedPreferences(Constants.SHARED_PREF_TAG, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putFloat(Constants.SHARED_PREF_FONT_SIZE + id, size);
+        editor.apply();
+    }
 }

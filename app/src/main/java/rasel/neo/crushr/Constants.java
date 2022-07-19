@@ -8,6 +8,7 @@ public class Constants {
     public static final String SHARED_PREF_WIDGETBG_COLOR = "crushr_widgetbg_color_";
     public static final String SHARED_PREF_TEXT_COLOR = "crushr_text_color_";
     public static final String SHARED_PREF_BG_COLOR = "crushr_bg_color_";
+    public static final String SHARED_PREF_FONT_SIZE = "crushr_font_size";
     public static final String EXTRA_WORD = "crushr_word";
 
     public static final int NOTIFY_ID = 0;

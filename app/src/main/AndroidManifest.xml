@@ -58,6 +58,12 @@
             android:excludeFromRecents="true">
         </activity>
 
+        <activity android:name="rasel.neo.crushr.dialogs.FontSizeDialog"
+            android:launchMode="singleInstance"
+            android:theme="@style/ThemeDialogCustom"
+            android:excludeFromRecents="true">
+        </activity>
+
         <receiver android:name="rasel.neo.crushr.CrushrProvider"
             android:exported="true">
             <intent-filter>

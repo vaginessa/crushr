@@ -1,10 +1,15 @@
 package rasel.neo.crushr;
 
+import static android.util.TypedValue.COMPLEX_UNIT_SP;
+
 import android.appwidget.AppWidgetManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.style.StyleSpan;
 import android.widget.RemoteViews;
 import android.widget.RemoteViewsService;
 
@@ -56,15 +61,20 @@ public class RemoteViewFactory implements RemoteViewsService.RemoteViewsFactory 
     @Override
     public RemoteViews getViewAt(int position) {
         RemoteViews itemViews = new RemoteViews(context.getPackageName(), R.layout.crushr_item);
-        itemViews.setTextViewText(R.id.todo, itemList.get(position));
 
         SharedPreferences prefs = context.getSharedPreferences(Constants.SHARED_PREF_TAG, Context.MODE_PRIVATE);
         int textColor = prefs.getInt(Constants.SHARED_PREF_TEXT_COLOR + appWidgetId, ContextCompat.getColor(context, R.color.color_6));
         int BGColor = prefs.getInt(Constants.SHARED_PREF_BG_COLOR + appWidgetId, ContextCompat.getColor(context, R.color.color_20));
+        float fontSize = prefs.getFloat(Constants.SHARED_PREF_FONT_SIZE + (float) appWidgetId, 14);
 
-        itemViews.setInt(R.id.todo, "setTextColor", textColor);
+        SpannableString spannableString = new SpannableString(itemList.get(position));
+        spannableString.setSpan(new StyleSpan(Typeface.NORMAL), 0, 4, 0);
+        itemViews.setTextViewText(R.id.todo, spannableString);
+
+        itemViews.setTextColor(R.id.todo, textColor);
         itemViews.setInt(R.id.bullet, "setColorFilter", textColor);
         itemViews.setInt(R.id.container, "setBackgroundColor", BGColor);
+        itemViews.setTextViewTextSize(R.id.todo, COMPLEX_UNIT_SP, fontSize);
 
         Intent i = new Intent();
         Bundle extras = new Bundle();
