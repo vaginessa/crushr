@@ -4,6 +4,7 @@ import android.appwidget.AppWidgetManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.graphics.drawable.GradientDrawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import androidx.core.content.ContextCompat;
 
 import rasel.neo.crushr.dialogs.BGColorDialog;
 import rasel.neo.crushr.dialogs.FontSizeDialog;
+import rasel.neo.crushr.dialogs.FontStyleDialog;
 import rasel.neo.crushr.dialogs.PrimaryColorDialog;
 import rasel.neo.crushr.dialogs.SecondaryColorDialog;
 import rasel.neo.crushr.dialogs.TextColorDialog;
@@ -54,9 +56,9 @@ public class ConfigActivity extends AppCompatActivity {
         });
 
         findViewById(R.id.widgetBG_color_dialog).setOnClickListener(v -> {
-            Intent secondaryIntent = new Intent(getApplicationContext(), WidgetBGColorDialog.class);
-            secondaryIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
-            startActivity(secondaryIntent);
+            Intent widgetBGIntent = new Intent(getApplicationContext(), WidgetBGColorDialog.class);
+            widgetBGIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
+            startActivity(widgetBGIntent);
         });
 
         findViewById(R.id.text_color_dialog).setOnClickListener(v -> {
@@ -66,15 +68,21 @@ public class ConfigActivity extends AppCompatActivity {
         });
 
         findViewById(R.id.bg_color_dialog).setOnClickListener(v -> {
-            Intent secondaryIntent = new Intent(getApplicationContext(), BGColorDialog.class);
-            secondaryIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
-            startActivity(secondaryIntent);
+            Intent bgColorIntent = new Intent(getApplicationContext(), BGColorDialog.class);
+            bgColorIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
+            startActivity(bgColorIntent);
         });
 
         findViewById(R.id.font_size_dialog).setOnClickListener(v -> {
-            Intent secondaryIntent = new Intent(getApplicationContext(), FontSizeDialog.class);
-            secondaryIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
-            startActivity(secondaryIntent);
+            Intent fontSizeIntent = new Intent(getApplicationContext(), FontSizeDialog.class);
+            fontSizeIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
+            startActivity(fontSizeIntent);
+        });
+
+        findViewById(R.id.font_style_dialog).setOnClickListener(v -> {
+            Intent fontStyleIntent = new Intent(getApplicationContext(), FontStyleDialog.class);
+            fontStyleIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
+            startActivity(fontStyleIntent);
         });
 
         findViewById(R.id.btn_reset).setOnClickListener(v -> {
@@ -85,6 +93,7 @@ public class ConfigActivity extends AppCompatActivity {
             BaseUtils.setBGColor(getApplicationContext(), ContextCompat.getColor(getApplicationContext(), R.color.color_20), appWidgetId);
 
             BaseUtils.setFontSize(getApplicationContext(), 14, appWidgetId);
+            BaseUtils.setFontStyle(getApplicationContext(), Typeface.NORMAL, appWidgetId);
             loadPreviews();
         });
 
@@ -107,6 +116,7 @@ public class ConfigActivity extends AppCompatActivity {
         int textColor = prefs.getInt(Constants.SHARED_PREF_TEXT_COLOR + appWidgetId, ContextCompat.getColor(getApplicationContext(), R.color.color_6));
         int BGColor = prefs.getInt(Constants.SHARED_PREF_BG_COLOR + appWidgetId, ContextCompat.getColor(getApplicationContext(), R.color.color_20));
         float fontSize = prefs.getFloat(Constants.SHARED_PREF_FONT_SIZE + (float) appWidgetId, 14);
+        int checkedStyle = prefs.getInt(Constants.SHARED_PREF_FONT_STYLE + appWidgetId, Typeface.NORMAL);
 
         GradientDrawable borderPrimary = new GradientDrawable();
         borderPrimary.setShape(GradientDrawable.OVAL);
@@ -139,6 +149,21 @@ public class ConfigActivity extends AppCompatActivity {
         (findViewById(R.id.bg_color_preview)).setBackground(borderBG);
 
         ((TextView) findViewById(R.id.font_size_preview)).setText(String.valueOf(fontSize));
+
+        TextView fontStylePreview = findViewById(R.id.font_style_preview);
+        if(checkedStyle == Typeface.NORMAL) {
+            fontStylePreview.setText(R.string.fontStyle_normal);
+            fontStylePreview.setTypeface(null, Typeface.NORMAL);
+        } else if(checkedStyle == Typeface.BOLD) {
+            fontStylePreview.setText(R.string.fontStyle_bold);
+            fontStylePreview.setTypeface(null, Typeface.BOLD);
+        } else if(checkedStyle == Typeface.ITALIC) {
+            fontStylePreview.setText(R.string.fontStyle_italic);
+            fontStylePreview.setTypeface(null, Typeface.ITALIC);
+        } else if(checkedStyle == Typeface.BOLD_ITALIC) {
+            fontStylePreview.setText(R.string.fontStyle_boldItalic);
+            fontStylePreview.setTypeface(null, Typeface.BOLD_ITALIC);
+        }
     }
 
     protected void onResume() {

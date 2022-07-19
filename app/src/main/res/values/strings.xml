@@ -9,6 +9,11 @@
     <string name="empty_task_error">Please enter a task first</string>
     <string name="empty_task_hint">This too shall pass.</string>
     <string name="font_size">Font Size</string>
+    <string name="font_style">Font Style</string>
+    <string name="fontStyle_normal">Normal</string>
+    <string name="fontStyle_bold">Bold</string>
+    <string name="fontStyle_italic">Italic</string>
+    <string name="fontStyle_boldItalic">Bold Italic</string>
     <string name="github_url">https://github.com/iamrasel/crushr</string>
     <string name="pinned_task">Pinned task</string>
     <string name="preview">Text\nPreview</string>

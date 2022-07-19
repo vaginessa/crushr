@@ -3,6 +3,7 @@ package rasel.neo.crushr.dialogs;
 import android.appwidget.AppWidgetManager;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -74,6 +75,17 @@ public class FontSizeDialog extends AppCompatActivity {
     private void loadInitPreviews() {
         int textColor = prefs.getInt(Constants.SHARED_PREF_TEXT_COLOR + appWidgetId, ContextCompat.getColor(getApplicationContext(), R.color.color_6));
         int BGColor = prefs.getInt(Constants.SHARED_PREF_BG_COLOR + appWidgetId, ContextCompat.getColor(getApplicationContext(), R.color.color_20));
+        int checkedStyle = prefs.getInt(Constants.SHARED_PREF_FONT_STYLE + appWidgetId, Typeface.NORMAL);
+
+        if(checkedStyle == Typeface.NORMAL) {
+            preview.setTypeface(null, Typeface.NORMAL);
+        } else if(checkedStyle == Typeface.BOLD) {
+            preview.setTypeface(null, Typeface.BOLD);
+        } else if(checkedStyle == Typeface.ITALIC) {
+            preview.setTypeface(null, Typeface.ITALIC);
+        } else if(checkedStyle == Typeface.BOLD_ITALIC) {
+            preview.setTypeface(null, Typeface.BOLD_ITALIC);
+        }
 
         preview.setTextColor(textColor);
         preview.setBackgroundColor(BGColor);

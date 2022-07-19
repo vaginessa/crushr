@@ -26,6 +26,7 @@
   - [x] Built-in material colors to select from
   - [x] Custom color input
 - [x] Change font size
+- [x] Change font style
 - [x] Reset configurations
 - [ ] See [TODO](#todo) section
 
@@ -58,7 +59,7 @@ There's another option to get this app- fork and build it. This project is very 
   - Tasks showing in random order
   - Bugs, those are playing with me
 - Features:
-  - Task text's style changing option
+  - 
   
 ## Contributing
 If you want to contribute to this project, I would suggest you to start from the [TODO](#todo) list first. Then you can do whatever comes up to your mind.

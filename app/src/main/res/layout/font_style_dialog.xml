@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_dialog"
+    android:layout_gravity="center_vertical"
+    android:padding="16dp">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/font_style"
+        android:fontFamily="serif"
+        android:textSize="22sp"
+        android:textStyle="bold"/>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="16dp">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:layout_marginEnd="8dp">
+
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:id="@+id/normal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/fontStyle_normal"
+                android:onClick="onFontStyleChecked"/>
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:id="@+id/bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/fontStyle_bold"
+                android:textStyle="bold"
+                android:onClick="onFontStyleChecked"/>
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:id="@+id/italic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/fontStyle_italic"
+                android:textStyle="italic"
+                android:onClick="onFontStyleChecked"/>
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:id="@+id/bold_italic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/fontStyle_boldItalic"
+                android:textStyle="bold|italic"
+                android:onClick="onFontStyleChecked"/>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/preview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/preview"
+            android:gravity="center"
+            android:layout_marginStart="8dp"/>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp"
+        android:gravity="end">
+        <Button
+            android:id="@+id/input_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@android:string/cancel"
+            android:layout_gravity="center"
+            android:background="@drawable/btn_pressed"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:layout_marginEnd="8dp"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="3dp"
+            style="?android:attr/buttonBarButtonStyle"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/input_ok"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@android:string/ok"
+            android:layout_gravity="center"
+            android:background="@drawable/btn_pressed"
+            android:textColor="@android:color/holo_blue_dark"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:layout_marginStart="8dp"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="3dp"
+            style="?android:attr/buttonBarButtonStyle"/>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</androidx.appcompat.widget.LinearLayoutCompat>

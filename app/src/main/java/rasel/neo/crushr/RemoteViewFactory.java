@@ -66,9 +66,18 @@ public class RemoteViewFactory implements RemoteViewsService.RemoteViewsFactory 
         int textColor = prefs.getInt(Constants.SHARED_PREF_TEXT_COLOR + appWidgetId, ContextCompat.getColor(context, R.color.color_6));
         int BGColor = prefs.getInt(Constants.SHARED_PREF_BG_COLOR + appWidgetId, ContextCompat.getColor(context, R.color.color_20));
         float fontSize = prefs.getFloat(Constants.SHARED_PREF_FONT_SIZE + (float) appWidgetId, 14);
+        int checkedStyle = prefs.getInt(Constants.SHARED_PREF_FONT_STYLE + appWidgetId, Typeface.NORMAL);
 
         SpannableString spannableString = new SpannableString(itemList.get(position));
-        spannableString.setSpan(new StyleSpan(Typeface.NORMAL), 0, 4, 0);
+        if(checkedStyle == Typeface.NORMAL) {
+            spannableString.setSpan(new StyleSpan(Typeface.NORMAL), 0, spannableString.length(), 0);
+        } else if(checkedStyle == Typeface.BOLD) {
+            spannableString.setSpan(new StyleSpan(Typeface.BOLD), 0, spannableString.length(), 0);
+        } else if(checkedStyle == Typeface.ITALIC) {
+            spannableString.setSpan(new StyleSpan(Typeface.ITALIC), 0, spannableString.length(), 0);
+        } else if(checkedStyle == Typeface.BOLD_ITALIC) {
+            spannableString.setSpan(new StyleSpan(Typeface.BOLD_ITALIC), 0, spannableString.length(), 0);
+        }
         itemViews.setTextViewText(R.id.todo, spannableString);
 
         itemViews.setTextColor(R.id.todo, textColor);
