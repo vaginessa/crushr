@@ -1,7 +1,5 @@
 package rasel.neo.crushr;
 
-import static android.content.Context.NOTIFICATION_SERVICE;
-
 import android.annotation.SuppressLint;
 import android.app.Notification;
 import android.app.NotificationChannel;
@@ -29,31 +27,49 @@ public class NotificationReceiver extends BroadcastReceiver {
         openIntent.putExtra("rasel.neo.crushr.OPEN", true);
         openIntent.putExtra("text", text);
         openIntent.putExtra("id", appWidgetId);
+        openIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+        openIntent.setAction(Long.toString(System.currentTimeMillis()));
         @SuppressLint("UnspecifiedImmutableFlag") PendingIntent openPending =
-                PendingIntent.getActivity(ctx, 1, openIntent, PendingIntent.FLAG_CANCEL_CURRENT);
+                PendingIntent.getActivity(ctx, 0, openIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
         Intent addIntent = new Intent(ctx, NewTaskDialog.class);
         addIntent.putExtra("rasel.neo.crushr.ADD", true);
         addIntent.putExtra("id", appWidgetId);
+        addIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+        addIntent.setAction(Long.toString(System.currentTimeMillis()));
         @SuppressLint("UnspecifiedImmutableFlag") PendingIntent addPending =
-                PendingIntent.getActivity(ctx, 1, addIntent, PendingIntent.FLAG_CANCEL_CURRENT);
+                PendingIntent.getActivity(ctx, 1, addIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
         Intent removeIntent = new Intent(ctx, NotificationReceiver.class);
         removeIntent.putExtra("rasel.neo.crushr.REMOVE", true);
         removeIntent.putExtra("text", text);
         removeIntent.putExtra("id", appWidgetId);
+        removeIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+        removeIntent.setAction(Long.toString(System.currentTimeMillis()));
         @SuppressLint("UnspecifiedImmutableFlag") PendingIntent removePending =
-                PendingIntent.getBroadcast(ctx, 1, removeIntent, PendingIntent.FLAG_ONE_SHOT);
+                PendingIntent.getBroadcast(ctx, 2, removeIntent, PendingIntent.FLAG_ONE_SHOT);
 
         Intent unpinIntent = new Intent(ctx, NotificationReceiver.class);
         unpinIntent.putExtra("rasel.neo.crushr.UNPIN", true);
+        unpinIntent.putExtra("text", text);
+        unpinIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+        unpinIntent.setAction(Long.toString(System.currentTimeMillis()));
         @SuppressLint("UnspecifiedImmutableFlag") PendingIntent unpinPending =
-                PendingIntent.getBroadcast(ctx, 1, unpinIntent, PendingIntent.FLAG_CANCEL_CURRENT);
+                PendingIntent.getBroadcast(ctx, 3, unpinIntent, PendingIntent.FLAG_ONE_SHOT);
 
         String channelId = ctx.getString(R.string.pinned_task);
         String channelTitle = ctx.getString(R.string.pinned_task);
         NotificationCompat.Builder builder = new NotificationCompat.Builder(ctx, channelId);
         int importance;
+
+        String contentTitle, contentText;
+        if(text.length() < 50) {
+            contentTitle = text;
+            contentText = null;
+        } else {
+            contentTitle = null;
+            contentText = text;
+        }
 
         if (notifyManager == null) {
             notifyManager = (NotificationManager)ctx.getSystemService(Context.NOTIFICATION_SERVICE);
@@ -70,27 +86,28 @@ public class NotificationReceiver extends BroadcastReceiver {
             importance = Notification.PRIORITY_DEFAULT;
         }
 
-        builder.setContentTitle(ctx.getString(R.string.pinned_task))
-                .setSmallIcon(R.drawable.icon_notify)
-                .setContentText(text)
+        builder.setSmallIcon(R.drawable.icon_notify)
+                .setContentTitle(contentTitle)
+                .setContentText(contentText)
                 .setPriority(importance)
                 .setShowWhen(false)
-                .setOngoing(true)
+                .setStyle(new NotificationCompat.BigTextStyle().bigText(contentText))
                 .setContentIntent(openPending)
                 .addAction(R.drawable.icon_add, ctx.getString(R.string.add), addPending)
                 .addAction(R.drawable.icon_remove, ctx.getString(R.string.remove), removePending)
                 .addAction(R.drawable.icon_unpin, ctx.getString(R.string.unpin), unpinPending);
 
         Notification notification = builder.build();
-        notifyManager.notify(Constants.NOTIFY_ID, notification);
+        notification.flags = Notification.FLAG_NO_CLEAR | Notification.FLAG_ONGOING_EVENT;
+        notifyManager.notify(text, Constants.NOTIFY_ID, notification);
     }
 
     @SuppressLint("UnsafeProtectedBroadcastReceiver")
     @Override
     public void onReceive(Context context, Intent intent) {
         if(intent.hasExtra("rasel.neo.crushr.UNPIN")) {
-            NotificationManager notificationManager = (NotificationManager) context.getSystemService(NOTIFICATION_SERVICE);
-            notificationManager.cancel(Constants.NOTIFY_ID);
+            String TAG = intent.getExtras().getString("text");
+            ExtraUtils.cancelNotification(context, TAG, Constants.NOTIFY_ID);
         } else if(intent.hasExtra("rasel.neo.crushr.REMOVE")) {
             String text = intent.getExtras().getString("text");
             int id = intent.getExtras().getInt("id");

@@ -11,7 +11,8 @@ import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.service.notification.StatusBarNotification;
 
-import rasel.neo.crushr.Constants;
+import java.util.Objects;
+
 import rasel.neo.crushr.CrushrProvider;
 import rasel.neo.crushr.R;
 
@@ -35,14 +36,20 @@ public class ExtraUtils {
     }
 
     // checks if notification exists or not
-    public static boolean notificationExist(Context ctx) {
+    public static boolean notificationExist(Context ctx, String TAG) {
         NotificationManager notificationManager = (NotificationManager) ctx.getSystemService(NOTIFICATION_SERVICE);
         StatusBarNotification[] notifications = notificationManager.getActiveNotifications();
         for (StatusBarNotification notification : notifications) {
-            if(notification.getId() == Constants.NOTIFY_ID) {
+            if(Objects.equals(notification.getTag(), TAG)) {
                 return true;
             }
         } return false;
+    }
+
+    // cancels notification
+    public static void cancelNotification(Context ctx, String tag, int id) {
+        NotificationManager notificationManager = (NotificationManager) ctx.getSystemService(NOTIFICATION_SERVICE);
+        notificationManager.cancel(tag, id);
     }
 
     // checks if a specific package exists or not

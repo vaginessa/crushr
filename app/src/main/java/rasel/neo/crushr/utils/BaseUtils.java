@@ -1,9 +1,6 @@
 package rasel.neo.crushr.utils;
 
-import static android.content.Context.NOTIFICATION_SERVICE;
-
 import android.annotation.SuppressLint;
-import android.app.NotificationManager;
 import android.content.Context;
 import android.content.SharedPreferences;
 
@@ -35,9 +32,8 @@ public class BaseUtils {
         editor.apply();
         editor.putStringSet(Constants.SHARED_PREF_LIST+id, set);
         editor.apply();
-        if(ExtraUtils.notificationExist(ctx)) {
-            NotificationManager notificationManager = (NotificationManager) ctx.getSystemService(NOTIFICATION_SERVICE);
-            notificationManager.cancel(Constants.NOTIFY_ID);
+        if(ExtraUtils.notificationExist(ctx, item)) {
+            ExtraUtils.cancelNotification(ctx, item, Constants.NOTIFY_ID);
         }
     }
 

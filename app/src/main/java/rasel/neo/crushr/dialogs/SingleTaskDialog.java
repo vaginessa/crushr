@@ -75,13 +75,16 @@ public class SingleTaskDialog extends AppCompatActivity {
             startActivity(tweetIntent);
         });
 
-        findViewById(R.id.pin_btn).setOnClickListener(v ->
-                NotificationReceiver.createNotification(getApplicationContext(), task, appWidgetId));
+        findViewById(R.id.pin_btn).setOnClickListener(v -> {
+            if(!ExtraUtils.notificationExist(getApplicationContext(), task)) {
+                NotificationReceiver.createNotification(getApplicationContext(), task, appWidgetId);
+            }
+        });
 
         findViewById(R.id.edit_btn).setOnClickListener(view -> {
             String editedTask = message.getText().toString().trim();
             if(!editedTask.isEmpty()) {
-                if(ExtraUtils.notificationExist(getApplicationContext())) {
+                if(ExtraUtils.notificationExist(getApplicationContext(), task)) {
                     BaseUtils.removeItem(getApplicationContext(), task, appWidgetId);
                     NotificationReceiver.createNotification(getApplicationContext(), editedTask, appWidgetId);
                 } else {
