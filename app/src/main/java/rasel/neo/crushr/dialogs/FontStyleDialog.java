@@ -31,7 +31,9 @@ public class FontStyleDialog extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
 
-        setContentView(R.layout.font_style_dialog);
+        setContentView(R.layout.font_configs_dialog);
+        ((AppCompatTextView) findViewById(R.id.title)).setText(R.string.font_style);
+        findViewById(R.id.fontSize_input).setVisibility(View.GONE);
 
         int width = (int) (getResources().getDisplayMetrics().widthPixels * 0.80);
         int height = (int) (getResources().getDisplayMetrics().heightPixels * 0.40);
@@ -48,6 +50,11 @@ public class FontStyleDialog extends AppCompatActivity {
 
         // initially load all previews as soon as onCreate method is called
         loadInitPreviews();
+
+        normal.setOnClickListener(v -> onFontStyleChecked(normal));
+        bold.setOnClickListener(v -> onFontStyleChecked(bold));
+        italic.setOnClickListener(v -> onFontStyleChecked(italic));
+        boldItalic.setOnClickListener(v -> onFontStyleChecked(boldItalic));
 
         findViewById(R.id.input_cancel).setOnClickListener(v -> finish());
 

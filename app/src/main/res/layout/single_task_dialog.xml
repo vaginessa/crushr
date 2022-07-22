@@ -17,9 +17,9 @@
         android:padding="7dp"
         android:scrollbarStyle="outsideInset"
         android:scrollbars="vertical"
-        android:textColor="@android:color/holo_red_light"
         android:autofillHints=""
         android:inputType="text"
+        android:singleLine="false"
         tools:ignore="LabelFor" />
 
     <LinearLayout

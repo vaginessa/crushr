@@ -57,7 +57,7 @@ public class NotificationReceiver extends BroadcastReceiver {
         @SuppressLint("UnspecifiedImmutableFlag") PendingIntent unpinPending =
                 PendingIntent.getBroadcast(ctx, 3, unpinIntent, PendingIntent.FLAG_ONE_SHOT);
 
-        String channelId = ctx.getString(R.string.pinned_task);
+        String channelId = "rasel.neo.crushr.pinned_task";
         String channelTitle = ctx.getString(R.string.pinned_task);
         NotificationCompat.Builder builder = new NotificationCompat.Builder(ctx, channelId);
         int importance;

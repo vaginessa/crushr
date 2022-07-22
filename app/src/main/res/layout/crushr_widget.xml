@@ -11,6 +11,7 @@
         android:layout_height="30dp"
         android:background="@color/color_1">
         <ImageView
+            android:id="@+id/logo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/logo"
@@ -38,6 +39,7 @@
         android:textColor="@android:color/holo_red_light"/>
 
     <ImageView
+        android:id="@+id/header_shadow"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:src="@drawable/shadow"
@@ -45,6 +47,7 @@
         android:contentDescription="@null" />
 
     <ImageView
+        android:id="@+id/task_shadow"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:src="@drawable/shadow"

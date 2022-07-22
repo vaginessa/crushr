@@ -57,9 +57,10 @@ There's another option to get this app- fork and build it. This project is very 
 ## TODO
 - Known issues:
   - Tasks showing in random order
+  - Hides notification texts after tapping on it (while showing multiple notification)
   - Bugs, those are playing with me
 - Features:
-  - 
+  - IME action changing option
   
 ## Contributing
 If you want to contribute to this project, I would suggest you to start from the [TODO](#todo) list first. Then you can do whatever comes up to your mind.

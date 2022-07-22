@@ -65,6 +65,14 @@ public class CrushrProvider extends AppWidgetProvider {
         widgetViews.setInt(R.id.add_crushr_button_bg, "setColorFilter", secondaryColor);
         widgetViews.setInt(R.id.widget, "setBackgroundColor", widgetBGColor);
 
+        if(primaryColor == 0) {
+            widgetViews.setViewVisibility(R.id.header_shadow, View.GONE);
+            widgetViews.setViewVisibility(R.id.logo, View.GONE);
+        }
+        if(prefs.getInt(Constants.SHARED_PREF_BG_COLOR + appWidgetId, ContextCompat.getColor(context, R.color.color_20)) == 0) {
+            widgetViews.setViewVisibility(R.id.task_shadow, View.GONE);
+        }
+
         appWidgetManager.notifyAppWidgetViewDataChanged(appWidgetId, R.id.crushr_listview);
         appWidgetManager.updateAppWidget(appWidgetId, widgetViews);
     }

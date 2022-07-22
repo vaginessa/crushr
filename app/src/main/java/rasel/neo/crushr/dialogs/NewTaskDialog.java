@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatImageView;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -50,6 +51,8 @@ public class NewTaskDialog extends AppCompatActivity {
         } else {
             appWidgetId = getIntent().getExtras().getInt(AppWidgetManager.EXTRA_APPWIDGET_ID);
         }
+
+        ((AppCompatImageView) findViewById(R.id.crushr_logo)).setColorFilter(getColor(R.color.color_18));
 
         mContainerView = findViewById(R.id.container);
         newTask = findViewById(R.id.new_task);
