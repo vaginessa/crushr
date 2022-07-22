@@ -7,6 +7,7 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.View;
 import android.view.Window;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -33,7 +34,9 @@ public class FontSizeDialog extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
 
-        setContentView(R.layout.font_size_dialog);
+        setContentView(R.layout.font_configs_dialog);
+        ((AppCompatTextView) findViewById(R.id.title)).setText(R.string.font_size);
+        findViewById(R.id.radio_group).setVisibility(View.GONE);
 
         int width = (int) (getResources().getDisplayMetrics().widthPixels * 0.80);
         int height = (int) (getResources().getDisplayMetrics().heightPixels * 0.30);

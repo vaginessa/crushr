@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -8,10 +9,10 @@
     android:padding="16dp">
 
     <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="@string/font_style"
         android:fontFamily="serif"
         android:textSize="22sp"
         android:textStyle="bold"/>
@@ -19,53 +20,71 @@
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
+        android:orientation="horizontal"
+        android:weightSum="3"
         android:layout_marginTop="16dp">
 
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical"
-            android:orientation="vertical"
-            android:layout_marginEnd="8dp">
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1">
 
-            <androidx.appcompat.widget.AppCompatRadioButton
-                android:id="@+id/normal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/fontStyle_normal"
-                android:onClick="onFontStyleChecked"/>
-            <androidx.appcompat.widget.AppCompatRadioButton
-                android:id="@+id/bold"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/fontStyle_bold"
-                android:textStyle="bold"
-                android:onClick="onFontStyleChecked"/>
-            <androidx.appcompat.widget.AppCompatRadioButton
-                android:id="@+id/italic"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/fontStyle_italic"
-                android:textStyle="italic"
-                android:onClick="onFontStyleChecked"/>
-            <androidx.appcompat.widget.AppCompatRadioButton
-                android:id="@+id/bold_italic"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/fontStyle_boldItalic"
-                android:textStyle="bold|italic"
-                android:onClick="onFontStyleChecked"/>
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/fontSize_input"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:background="@drawable/bg_edittext"
+                android:textColor="@android:color/black"
+                android:padding="7dp"
+                android:imeOptions="actionDone"
+                android:singleLine="true"
+                android:inputType="numberDecimal"
+                android:gravity="center"
+                android:autofillHints="@null"
+                tools:ignore="LabelFor" />
 
-        </androidx.appcompat.widget.LinearLayoutCompat>
+            <RadioGroup
+                android:id="@+id/radio_group"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/normal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/fontStyle_normal"/>
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/fontStyle_bold"
+                    android:textStyle="bold"/>
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/italic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/fontStyle_italic"
+                    android:textStyle="italic"/>
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/bold_italic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/fontStyle_boldItalic"
+                    android:textStyle="bold|italic"/>
+            </RadioGroup>
+
+        </RelativeLayout>
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/preview"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
             android:text="@string/preview"
             android:gravity="center"
-            android:layout_marginStart="8dp"/>
+            android:layout_gravity="center_vertical"
+            android:paddingVertical="16dp"/>
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -75,7 +94,8 @@
         android:orientation="horizontal"
         android:layout_marginTop="16dp"
         android:gravity="end">
-        <Button
+
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/input_cancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

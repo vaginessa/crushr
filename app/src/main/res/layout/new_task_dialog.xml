@@ -14,14 +14,11 @@
         android:orientation="horizontal"
         android:paddingBottom="16dp">
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/crushr_logo"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/app_name"
-            android:textColor="@android:color/black"
-            android:textSize="28sp"
-            android:fontFamily="cursive"
-            tools:ignore="RelativeOverlap" />
+            android:layout_height="23dp"
+            android:src="@drawable/logo"/>
         
         <ImageView
             android:id="@+id/settings"
@@ -62,7 +59,7 @@
         android:layout_marginTop="16dp"
         android:padding="7dp"
         android:imeOptions="actionDone"
-        android:singleLine="true"
+        android:singleLine="false"
         android:autofillHints="@null"
         android:inputType="text" />
 
