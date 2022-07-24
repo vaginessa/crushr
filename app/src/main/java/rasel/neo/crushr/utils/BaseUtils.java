@@ -85,4 +85,11 @@ public class BaseUtils {
         editor.putInt(Constants.SHARED_PREF_FONT_STYLE + id, style);
         editor.apply();
     }
+
+    public static void setEnterKeyAction(Context ctx, int action) {
+        SharedPreferences prefs = ctx.getSharedPreferences(Constants.SHARED_PREF_TAG, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putInt(Constants.SHARED_PREF_ENTER_ACTION, action);
+        editor.apply();
+    }
 }

@@ -1,5 +1,6 @@
 package rasel.neo.crushr;
 
+import android.annotation.SuppressLint;
 import android.appwidget.AppWidgetManager;
 import android.content.Context;
 import android.content.Intent;
@@ -11,6 +12,8 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatTextView;
+import androidx.appcompat.widget.PopupMenu;
 import androidx.core.content.ContextCompat;
 
 import rasel.neo.crushr.dialogs.BGColorDialog;
@@ -24,9 +27,11 @@ import rasel.neo.crushr.utils.BaseUtils;
 
 public class ConfigActivity extends AppCompatActivity {
 
+    private AppCompatTextView chooseEnterKeyAction;
     private int appWidgetId;
     private boolean shouldExecuteOnResume;
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +39,8 @@ public class ConfigActivity extends AppCompatActivity {
         setContentView(R.layout.crushr_config);
         appWidgetId = getIntent().getExtras().getInt(AppWidgetManager.EXTRA_APPWIDGET_ID);
         shouldExecuteOnResume = false;
+
+        chooseEnterKeyAction = (AppCompatTextView) findViewById(R.id.choose_enterKey_action);
 
         // load previews
         loadPreviews();
@@ -85,15 +92,32 @@ public class ConfigActivity extends AppCompatActivity {
             startActivity(fontStyleIntent);
         });
 
+        chooseEnterKeyAction.setOnClickListener(view -> {
+            PopupMenu popupMenu = new PopupMenu(ConfigActivity.this, chooseEnterKeyAction);
+            popupMenu.getMenuInflater().inflate(R.menu.enter_actions, popupMenu.getMenu());
+            popupMenu.setOnMenuItemClickListener(menuItem -> {
+                chooseEnterKeyAction.setText(menuItem.getTitle());
+                switch(menuItem.getItemId()) {
+                    case R.id.item_add:
+                        BaseUtils.setEnterKeyAction(getApplicationContext(), 0);
+                        break;
+                    case R.id.item_newLine:
+                        BaseUtils.setEnterKeyAction(getApplicationContext(), 1);
+                        break;
+                } return true;
+            });
+            popupMenu.show();
+        });
+
         findViewById(R.id.btn_reset).setOnClickListener(v -> {
             BaseUtils.setPrimaryColor(getApplicationContext(), ContextCompat.getColor(getApplicationContext(), R.color.color_22), appWidgetId);
             BaseUtils.setSecondaryColor(getApplicationContext(), ContextCompat.getColor(getApplicationContext(), R.color.color_19), appWidgetId);
             BaseUtils.setWidgetBGColor(getApplicationContext(), ContextCompat.getColor(getApplicationContext(), android.R.color.transparent), appWidgetId);
             BaseUtils.setTextColor(getApplicationContext(), ContextCompat.getColor(getApplicationContext(), R.color.color_6), appWidgetId);
             BaseUtils.setBGColor(getApplicationContext(), ContextCompat.getColor(getApplicationContext(), R.color.color_20), appWidgetId);
-
             BaseUtils.setFontSize(getApplicationContext(), 14, appWidgetId);
             BaseUtils.setFontStyle(getApplicationContext(), Typeface.NORMAL, appWidgetId);
+            BaseUtils.setEnterKeyAction(getApplicationContext(), 0);
             loadPreviews();
         });
 
@@ -117,6 +141,7 @@ public class ConfigActivity extends AppCompatActivity {
         int BGColor = prefs.getInt(Constants.SHARED_PREF_BG_COLOR + appWidgetId, ContextCompat.getColor(getApplicationContext(), R.color.color_20));
         float fontSize = prefs.getFloat(Constants.SHARED_PREF_FONT_SIZE + (float) appWidgetId, 14);
         int checkedStyle = prefs.getInt(Constants.SHARED_PREF_FONT_STYLE + appWidgetId, Typeface.NORMAL);
+        int enterKeyActon = prefs.getInt(Constants.SHARED_PREF_ENTER_ACTION, 0);
 
         GradientDrawable borderPrimary = new GradientDrawable();
         borderPrimary.setShape(GradientDrawable.OVAL);
@@ -163,6 +188,12 @@ public class ConfigActivity extends AppCompatActivity {
         } else if(checkedStyle == Typeface.BOLD_ITALIC) {
             fontStylePreview.setText(R.string.fontStyle_boldItalic);
             fontStylePreview.setTypeface(null, Typeface.BOLD_ITALIC);
+        }
+
+        if(enterKeyActon == 0) {
+            chooseEnterKeyAction.setText(R.string.add);
+        } else if(enterKeyActon == 1) {
+            chooseEnterKeyAction.setText(R.string.new_line);
         }
     }
 

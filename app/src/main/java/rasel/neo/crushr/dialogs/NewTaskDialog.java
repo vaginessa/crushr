@@ -34,6 +34,7 @@ public class NewTaskDialog extends AppCompatActivity {
     private ArrayList<String> tasks;
     private LinearLayout mContainerView;
     private int appWidgetId;
+    private SharedPreferences prefs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,9 +55,12 @@ public class NewTaskDialog extends AppCompatActivity {
 
         ((AppCompatImageView) findViewById(R.id.crushr_logo)).setColorFilter(getColor(R.color.color_18));
 
+        prefs = getSharedPreferences(Constants.SHARED_PREF_TAG, MODE_PRIVATE);
         mContainerView = findViewById(R.id.container);
         newTask = findViewById(R.id.new_task);
         tasks = new ArrayList<>();
+
+        enterKeyState();
 
         newTask.setOnEditorActionListener((v, actionId, event) -> {
             if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
@@ -65,8 +69,7 @@ public class NewTaskDialog extends AppCompatActivity {
             return true;
         });
 
-        SharedPreferences prefs = getSharedPreferences(Constants.SHARED_PREF_TAG, MODE_PRIVATE);
-        Set<String> set = prefs.getStringSet(Constants.SHARED_PREF_LIST+appWidgetId, new HashSet<>());
+        Set<String> set = prefs.getStringSet(Constants.SHARED_PREF_LIST + appWidgetId, new HashSet<>());
         for(String item : set) {
             addItem(item);
         }
@@ -117,5 +120,22 @@ public class NewTaskDialog extends AppCompatActivity {
             BaseUtils.addItem(getApplicationContext(), task, appWidgetId);
             addItem(task);
         }
+    }
+
+    private void enterKeyState() {
+        int enterKeyAction = prefs.getInt(Constants.SHARED_PREF_ENTER_ACTION, 0);
+        if(enterKeyAction == 0) {
+            newTask.setSingleLine(true);
+            newTask.setImeActionLabel(getString(R.string.add).toUpperCase(), EditorInfo.IME_ACTION_DONE);
+        } else if(enterKeyAction == 1) {
+            newTask.setSingleLine(false);
+            newTask.setMaxLines(5);
+            newTask.setImeOptions(EditorInfo.IME_FLAG_NO_ENTER_ACTION);
+        }
+    }
+
+    protected void onResume() {
+        super.onResume();
+        enterKeyState();
     }
 }

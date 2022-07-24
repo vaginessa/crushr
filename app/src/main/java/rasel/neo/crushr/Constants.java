@@ -10,6 +10,7 @@ public class Constants {
     public static final String SHARED_PREF_BG_COLOR = "crushr_bg_color";
     public static final String SHARED_PREF_FONT_SIZE = "crushr_font_size";
     public static final String SHARED_PREF_FONT_STYLE = "crushr_font_style";
+    public static final String SHARED_PREF_ENTER_ACTION = "crushr_enter_action";
     public static final String EXTRA_WORD = "crushr_word";
 
     public static final int NOTIFY_ID = 0;

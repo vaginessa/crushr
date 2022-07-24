@@ -4,10 +4,13 @@ import android.appwidget.AppWidgetManager;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
+import android.view.KeyEvent;
 import android.view.Window;
+import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -20,6 +23,8 @@ import rasel.neo.crushr.utils.BaseUtils;
 import rasel.neo.crushr.utils.ExtraUtils;
 
 public class SingleTaskDialog extends AppCompatActivity {
+
+    private EditText message;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,9 +47,28 @@ public class SingleTaskDialog extends AppCompatActivity {
             appWidgetId = getIntent().getExtras().getInt(AppWidgetManager.EXTRA_APPWIDGET_ID);
         }
 
-        EditText message = findViewById(R.id.message);
+        message = findViewById(R.id.message);
         message.setMovementMethod(new ScrollingMovementMethod());
         message.setText(task);
+
+        SharedPreferences prefs = getSharedPreferences(Constants.SHARED_PREF_TAG, MODE_PRIVATE);
+        int enterKeyAction = prefs.getInt(Constants.SHARED_PREF_ENTER_ACTION, 0);
+        if(enterKeyAction == 0) {
+            message.setSingleLine(true);
+            message.setImeActionLabel(getString(R.string.edit).toUpperCase(), EditorInfo.IME_ACTION_DONE);
+        } else if(enterKeyAction == 1) {
+            message.setSingleLine(false);
+            message.setMaxLines(5);
+            message.setImeOptions(EditorInfo.IME_FLAG_NO_ENTER_ACTION);
+        }
+
+        message.setOnEditorActionListener((v, actionId, event) -> {
+            if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
+                editTaskJob(appWidgetId, task);
+                finish();
+            }
+            return true;
+        });
 
         findViewById(R.id.copy_btn).setOnClickListener(v -> {
             ClipboardManager clipBoard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
@@ -82,17 +106,7 @@ public class SingleTaskDialog extends AppCompatActivity {
         });
 
         findViewById(R.id.edit_btn).setOnClickListener(view -> {
-            String editedTask = message.getText().toString().trim();
-            if(!editedTask.isEmpty()) {
-                if(ExtraUtils.notificationExist(getApplicationContext(), task)) {
-                    BaseUtils.removeItem(getApplicationContext(), task, appWidgetId);
-                    NotificationReceiver.createNotification(getApplicationContext(), editedTask, appWidgetId);
-                } else {
-                    BaseUtils.removeItem(getApplicationContext(), task, appWidgetId);
-                }
-                BaseUtils.addItem(getApplicationContext(), editedTask, appWidgetId);
-                ExtraUtils.refreshListView(getApplicationContext(), appWidgetId);
-            }
+            editTaskJob(appWidgetId, task);
             finish();
         });
 
@@ -101,5 +115,19 @@ public class SingleTaskDialog extends AppCompatActivity {
             ExtraUtils.refreshListView(getApplicationContext(), appWidgetId);
             finish();
         });
+    }
+
+    private void editTaskJob(int appWidgetId, String task) {
+        String editedTask = message.getText().toString().trim();
+        if(!editedTask.isEmpty()) {
+            if(ExtraUtils.notificationExist(getApplicationContext(), task)) {
+                BaseUtils.removeItem(getApplicationContext(), task, appWidgetId);
+                NotificationReceiver.createNotification(getApplicationContext(), editedTask, appWidgetId);
+            } else {
+                BaseUtils.removeItem(getApplicationContext(), task, appWidgetId);
+            }
+            BaseUtils.addItem(getApplicationContext(), editedTask, appWidgetId);
+            ExtraUtils.refreshListView(getApplicationContext(), appWidgetId);
+        }
     }
 }

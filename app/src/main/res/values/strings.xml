@@ -3,6 +3,7 @@
     <string name="app_name">crushr</string>
     <string name="apply_configs">Apply new configs</string>
     <string name="bg_color">Background Color</string>
+    <string name="Enter_key_action">Enter Key Action</string>
     <string name="color_hint">e.g. #AARRGGBB or #RRGGBB</string>
     <string name="configs_title">Configurations</string>
     <string name="edit">Edit</string>
@@ -15,6 +16,7 @@
     <string name="fontStyle_italic">Italic</string>
     <string name="fontStyle_boldItalic">Bold Italic</string>
     <string name="github_url">https://github.com/iamrasel/crushr</string>
+    <string name="new_line">New Line</string>
     <string name="pinned_task">Pinned task</string>
     <string name="preview">Text\nPreview</string>
     <string name="primary_color">Primary Color</string>
