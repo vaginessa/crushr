@@ -68,9 +68,14 @@ public class CrushrProvider extends AppWidgetProvider {
         if(primaryColor == 0) {
             widgetViews.setViewVisibility(R.id.header_shadow, View.GONE);
             widgetViews.setViewVisibility(R.id.logo, View.GONE);
+        } else {
+            widgetViews.setViewVisibility(R.id.header_shadow, View.VISIBLE);
+            widgetViews.setViewVisibility(R.id.logo, View.VISIBLE);
         }
         if(prefs.getInt(Constants.SHARED_PREF_BG_COLOR + appWidgetId, ContextCompat.getColor(context, R.color.color_20)) == 0) {
             widgetViews.setViewVisibility(R.id.task_shadow, View.GONE);
+        } else {
+            widgetViews.setViewVisibility(R.id.task_shadow, View.VISIBLE);
         }
 
         appWidgetManager.notifyAppWidgetViewDataChanged(appWidgetId, R.id.crushr_listview);
