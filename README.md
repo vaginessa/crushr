@@ -8,7 +8,7 @@
 		<a href='https://github.com/iamrasel/crushr/blob/master/LICENSE.md'><img src='https://img.shields.io/badge/License-MIT-red.svg'></a>
 		<a href='https://github.com/iamrasel/crushr/actions'><img src='https://github.com/iamrasel/crushr/workflows/Build_Pushed/badge.svg?branch=master&event=push'></a>
         <br>
-        <img src='https://img.shields.io/badge/App-crushr-80d8ff.svg' alt='crushr'>
+        <img src='https://img.shields.io/badge/App-crushr-ff9e80.svg' alt='crushr'>
 		<a href='https://github.com/iamrasel/crushr/releases'><img src='https://img.shields.io/github/release/iamrasel/crushr.svg' ></a>
 		<img src='https://img.shields.io/github/downloads/iamrasel/crushr/total.svg' alt='Downloads'>
 		<img src='https://img.shields.io/badge/Maintained-yes-green.svg' alt='Maintained'>
@@ -20,13 +20,9 @@
 - [x] Add, remove and edit task
   - [x] Copy or share task text
   - [x] Quick tweet
-- [x] Pin task to notification area
+- [x] Pin tasks to notification area
   - [x] Control task from notification panel
-- [x] Change colors of different parts
-  - [x] Built-in material colors to select from
-  - [x] Custom color input
-- [x] Change font size
-- [x] Change font style
+- [x] Multiple customization option
 - [x] Reset configurations
 - [ ] See [TODO](#todo) section
 
@@ -34,12 +30,11 @@
 As per version 5 (14072022). Click on the image to enlarge it.
 
 <div align='center'>
-	<img src='fastlane/metadata/android/en-US/images/phoneScreenshots/1.png' width=100>
-	<img src='fastlane/metadata/android/en-US/images/phoneScreenshots/2.png' width=100>
-	<img src='fastlane/metadata/android/en-US/images/phoneScreenshots/3.png' width=100>
-	<img src='fastlane/metadata/android/en-US/images/phoneScreenshots/4.png' width=100>
-	<img src='fastlane/metadata/android/en-US/images/phoneScreenshots/5.png' width=100>
-	<img src='fastlane/metadata/android/en-US/images/phoneScreenshots/6.png' width=100>
+	<img src='fastlane/metadata/android/en-US/images/phoneScreenshots/1.png' width=120>
+	<img src='fastlane/metadata/android/en-US/images/phoneScreenshots/2.png' width=120>
+	<img src='fastlane/metadata/android/en-US/images/phoneScreenshots/3.png' width=120>
+	<img src='fastlane/metadata/android/en-US/images/phoneScreenshots/4.png' width=120>
+	<img src='fastlane/metadata/android/en-US/images/phoneScreenshots/5.png' width=120>
 </div>
 
 ## Download
@@ -58,9 +53,9 @@ There's another option to get this app- fork and build it. This project is very 
 - Known issues:
   - Tasks showing in random order
   - Hides notification texts after tapping on it (while showing multiple notification)
-  - Bugs, those are playing with me
+  - More unknown bugs
 - Features:
-  - IME action changing option
+  - Alarm (!)
   
 ## Contributing
 If you want to contribute to this project, I would suggest you to start from the [TODO](#todo) list first. Then you can do whatever comes up to your mind.

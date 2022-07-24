@@ -1,0 +1,4 @@
+- Change font size
+- Change font style
+- Control 'Enter' key action
+- Few more improvements
