@@ -3,16 +3,20 @@
     <h1 style='color:#ffff9e80;'>crushr</h1>
     <strong>A widget based TODO manager app for android</strong>
 	<p>
-		<img src='https://img.shields.io/badge/Android-3DDC84.svg?style=for-the-badge&logo=android&logoColor=white&style=plastic' alt='OS'>
-		<img src='https://img.shields.io/badge/SDK-32-vibrant.svg' alt='SDK'>
-		<a href='https://github.com/iamrasel/crushr/blob/master/LICENSE.md'><img src='https://img.shields.io/badge/License-MIT-red.svg'></a>
-		<a href='https://github.com/iamrasel/crushr/actions'><img src='https://github.com/iamrasel/crushr/workflows/Build_Pushed/badge.svg?branch=master&event=push'></a>
+		<img src='https://img.shields.io/badge/Android-3DDC84.svg?style=flat&logo=android&logoColor=white' alt='OS'>
+		<img src='https://img.shields.io/badge/SDK-23-vibrant.svg?style=flat' alt='SDK'>
+		<a href='https://github.com/iamrasel/crushr/blob/master/LICENSE.md'><img src='https://img.shields.io/badge/License-MIT-red.svg?style=flat'></a>
+		<a href='https://github.com/iamrasel/crushr/actions'><img src='https://github.com/iamrasel/crushr/workflows/Build_Pushed/badge.svg?branch=master&event=push&style=flat'></a>
         <br>
-        <img src='https://img.shields.io/badge/App-crushr-ff9e80.svg' alt='crushr'>
-		<a href='https://github.com/iamrasel/crushr/releases'><img src='https://img.shields.io/github/release/iamrasel/crushr.svg' ></a>
-		<img src='https://img.shields.io/github/downloads/iamrasel/crushr/total.svg' alt='Downloads'>
-		<img src='https://img.shields.io/badge/Maintained-yes-green.svg' alt='Maintained'>
+        <img src='https://img.shields.io/badge/App-crushr-ff9e80.svg?style=flat' alt='crushr'>
+		<a href='https://github.com/iamrasel/crushr/releases'><img src='https://img.shields.io/github/release/iamrasel/crushr.svg?style=flat' ></a>
+		<img src='https://img.shields.io/github/downloads/iamrasel/crushr/total.svg?style=flat' alt='Downloads'>
+		<img src='https://img.shields.io/badge/Maintained-no-yellow.svg?style=flat' alt='Maintained'>
 	</p>
+    <br>
+    <p>
+        <b>Temporarily abandoned.</b>
+    </p>
 </div>
 
 ## Features
@@ -27,7 +31,7 @@
 - [ ] See [TODO](#todo) section
 
 ## Screenshots
-As per version 5 (14072022). Click on the image to enlarge it.
+As per version 7 (24072022). Click on the image to enlarge it.
 
 <div align='center'>
 	<img src='fastlane/metadata/android/en-US/images/phoneScreenshots/1.png' width=120>
@@ -56,6 +60,8 @@ There's another option to get this app- fork and build it. This project is very 
   - More unknown bugs
 - Features:
   - Alarm (!)
+  - Complete redesign with MD3
+  - Migration to Kotlin
   
 ## Contributing
 If you want to contribute to this project, I would suggest you to start from the [TODO](#todo) list first. Then you can do whatever comes up to your mind.
